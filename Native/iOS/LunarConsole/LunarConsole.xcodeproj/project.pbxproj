@@ -132,6 +132,9 @@
 		840F08881DEA6B7400E9F13D /* LUStringUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F087E1DEA6B7400E9F13D /* LUStringUtilsTest.m */; };
 		844741B51B719C3100F5ABD3 /* libLunarConsoleFull.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 844741A91B719C3100F5ABD3 /* libLunarConsoleFull.a */; };
 		EF1D47A81E04A60B005BEC07 /* LUActionRegistryFilterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D47A71E04A60B005BEC07 /* LUActionRegistryFilterTest.swift */; };
+		EFC97A8E1F56114400BCC461 /* LUPlayerPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC97A8D1F56114400BCC461 /* LUPlayerPrefs.m */; };
+		EFC97A951F5616D400BCC461 /* LUPlayerPrefsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC97A941F5616D400BCC461 /* LUPlayerPrefsTest.swift */; };
+		EFC97A991F5617FA00BCC461 /* PlayerPrefs.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFC97A981F5617FA00BCC461 /* PlayerPrefs.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -396,6 +399,10 @@
 		844741BA1B719C3100F5ABD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF1D47A61E04A60A005BEC07 /* LunarConsoleTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LunarConsoleTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EF1D47A71E04A60B005BEC07 /* LUActionRegistryFilterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LUActionRegistryFilterTest.swift; sourceTree = "<group>"; };
+		EFC97A8C1F56114400BCC461 /* LUPlayerPrefs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUPlayerPrefs.h; sourceTree = "<group>"; };
+		EFC97A8D1F56114400BCC461 /* LUPlayerPrefs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUPlayerPrefs.m; sourceTree = "<group>"; };
+		EFC97A941F5616D400BCC461 /* LUPlayerPrefsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LUPlayerPrefsTest.swift; sourceTree = "<group>"; };
+		EFC97A981F5617FA00BCC461 /* PlayerPrefs.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = PlayerPrefs.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -483,6 +490,7 @@
 			children = (
 				4D02A7811E496C93009F4998 /* Actions */,
 				4D02A78E1E496C93009F4998 /* Log Overlay */,
+				EFC97A8B1F56112E00BCC461 /* PlayerPrefs */,
 				4D02A7921E496C93009F4998 /* Variables */,
 			);
 			path = Controllers;
@@ -912,9 +920,11 @@
 				840F087A1DEA6B7400E9F13D /* LUConsoleTest.m */,
 				840F087B1DEA6B7400E9F13D /* LUMutableArrayTest.m */,
 				EF1D47A61E04A60A005BEC07 /* LunarConsoleTests-Bridging-Header.h */,
+				EFC97A941F5616D400BCC461 /* LUPlayerPrefsTest.swift */,
 				840F087C1DEA6B7400E9F13D /* LUSortedListTest.m */,
 				840F087D1DEA6B7400E9F13D /* LUStacktraceTest.m */,
 				840F087E1DEA6B7400E9F13D /* LUStringUtilsTest.m */,
+				EFC97A981F5617FA00BCC461 /* PlayerPrefs.plist */,
 				844741B91B719C3100F5ABD3 /* Supporting Files */,
 			);
 			path = LunarConsoleTests;
@@ -926,6 +936,15 @@
 				844741BA1B719C3100F5ABD3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EFC97A8B1F56112E00BCC461 /* PlayerPrefs */ = {
+			isa = PBXGroup;
+			children = (
+				EFC97A8C1F56114400BCC461 /* LUPlayerPrefs.h */,
+				EFC97A8D1F56114400BCC461 /* LUPlayerPrefs.m */,
+			);
+			path = PlayerPrefs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1025,6 +1044,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFC97A991F5617FA00BCC461 /* PlayerPrefs.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1131,6 +1151,7 @@
 				4DD4FBF11DFB932C00032A29 /* LUConsoleSettingsController.m in Sources */,
 				4D02A7B41E496C93009F4998 /* LUActionRegistryFilter.m in Sources */,
 				4DD4FBD71DFB932B00032A29 /* LUConsoleLogEntryList.m in Sources */,
+				EFC97A8E1F56114400BCC461 /* LUPlayerPrefs.m in Sources */,
 				4DD4FBDD1DFB932C00032A29 /* LUConsoleLogMenuController.m in Sources */,
 				4DD4FC051DFB932C00032A29 /* LUViewController.m in Sources */,
 				4DD4FBDB1DFB932B00032A29 /* LUConsoleLogEntryTableViewCell.m in Sources */,
@@ -1168,6 +1189,7 @@
 				EF1D47A81E04A60B005BEC07 /* LUActionRegistryFilterTest.swift in Sources */,
 				840F08811DEA6B7400E9F13D /* LUActionRegistryTest.m in Sources */,
 				840F08821DEA6B7400E9F13D /* LUConsoleEntryListTest.m in Sources */,
+				EFC97A951F5616D400BCC461 /* LUPlayerPrefsTest.swift in Sources */,
 				840F08861DEA6B7400E9F13D /* LUSortedListTest.m in Sources */,
 				840F08851DEA6B7400E9F13D /* LUMutableArrayTest.m in Sources */,
 				840F087F1DEA6B7400E9F13D /* TestCase.m in Sources */,

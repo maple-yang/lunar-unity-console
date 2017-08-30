@@ -1014,6 +1014,7 @@ namespace LunarConsolePlugin
                     m_nativeHandlerLookup["console_action"] = ConsoleActionHandler;
                     m_nativeHandlerLookup["console_variable_set"] = ConsoleVariableSetHandler;
                     m_nativeHandlerLookup["track_event"] = TrackEventHandler;
+                    m_nativeHandlerLookup["set_player_prefs"] = SetPlayerPrefsHandler;
                 }
 
                 return m_nativeHandlerLookup;
@@ -1178,6 +1179,68 @@ namespace LunarConsolePlugin
             {
                 Log.e(e, "Exception while trying to set variable '{0}'", variable.Name);
             }
+        }
+
+        void SetPlayerPrefsHandler(IDictionary<string, string> data)
+        {
+            string type;
+            if (!data.TryGetValue("type", out type))
+            {
+                Log.w("Can't set PlayerPrefs: missing 'type' parameter");
+                return;
+            }
+
+            string name;
+            if (!data.TryGetValue("name", out name))
+            {
+                Log.w("Can't set PlayerPrefs: missing 'name' parameter");
+                return;
+            }
+
+            string value;
+            if (!data.TryGetValue("value", out value))
+            {
+                Log.w("Can't set PlayerPrefs: missing 'value' parameter");
+                return;
+            }
+
+            switch (type)
+            {
+                case "int":
+                {
+                    int intValue;
+                    if (!int.TryParse(value, out intValue))
+                    {
+                        Log.w("Can't set '{0}' PlayerPrefs: invalid int parameter '{1}'", name, value);
+                        return;
+                    }
+                    PlayerPrefs.SetInt(name, intValue);
+                    break;
+                }
+                case "float":
+                {
+                    float floatValue;
+                    if (!float.TryParse(value, out floatValue))
+                    {
+                        Log.w("Can't set '{0}' PlayerPrefs: invalid float parameter '{1}'", name, value);
+                        return;
+                    }
+                    PlayerPrefs.SetFloat(name, floatValue);
+                    break;
+                }
+                case "string":
+                {
+                    PlayerPrefs.SetString(name, value);
+                    break;
+                }
+                default:
+                {
+                    Log.w("Can't set '{0}' PlayerPrefs: unexpected type '{1}'", name, type);
+                    return;
+                }
+            }
+
+            PlayerPrefs.Save();
         }
 
         void TrackEventHandler(IDictionary<string, string> data)
