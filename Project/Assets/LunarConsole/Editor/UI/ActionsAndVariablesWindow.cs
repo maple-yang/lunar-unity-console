@@ -177,6 +177,12 @@ namespace LunarConsoleEditorInternal
                 case CVarType.String:
                     cvar.Value = EditorGUILayout.TextField(cvar.Name, cvar.Value);
                     break;
+                case CVarType.Enum:
+                    var values = cvar.AllValues;
+                    var index = System.Array.IndexOf(values, cvar.Value);
+                    index = EditorGUILayout.Popup(new GUIContent(cvar.Name), index, values);
+                    cvar.Value = values[index];
+                    break;
                 default:
                     EditorGUILayout.LabelField(cvar.Name, cvar.Value);
                     break;

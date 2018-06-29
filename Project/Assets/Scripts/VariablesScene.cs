@@ -35,7 +35,8 @@ public class VariablesScene : MonoBehaviour
         Variables.c_float,
         Variables.c_int,
         Variables.c_range,
-        Variables.c_string
+        Variables.c_string,
+        Variables.c_enum
     };
 
     void Start()

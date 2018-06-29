@@ -400,7 +400,7 @@ namespace LunarConsolePlugin
                     {
                         var min = rangeAttribute.min;
                         var max = rangeAttribute.max;
-                        if (max - min < 0.00001f)
+                        if (max - min < Mathf.Epsilon)
                         {
                             Log.w("Invalid range [{0}, {1}] for variable '{2}'", min.ToString(), max.ToString(), field.Name);
                             return CVarValueRange.Undefined;
@@ -433,12 +433,12 @@ namespace LunarConsolePlugin
                             int count = reader.ReadInt32();
                             for (int i = 0; i < count; ++i)
                             {
-                                var name = reader.ReadString();
+                                var cvarName = reader.ReadString();
                                 var value = reader.ReadString();
-                                var cvar = m_registry.FindVariable(name);
+                                var cvar = m_registry.FindVariable(cvarName);
                                 if (cvar == null)
                                 {
-                                    Log.w("Ignoring variable '%s'", name);
+                                    Log.w("Ignoring variable '%s'", cvarName);
                                     continue;
                                 }
 
@@ -1164,6 +1164,7 @@ namespace LunarConsolePlugin
                         break;
                     }
                     case CVarType.String:
+                    case CVarType.Enum:
                     {
                         variable.Value = value;
                         m_variablesDirty = true;

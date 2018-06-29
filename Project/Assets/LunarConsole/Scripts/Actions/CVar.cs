@@ -19,7 +19,7 @@
 //  limitations under the License.
 //
 
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -36,7 +36,8 @@ namespace LunarConsolePlugin
         Boolean,
         Integer,
         Float,
-        String
+        String,
+        Enum
     }
 
     struct CValue
@@ -48,8 +49,8 @@ namespace LunarConsolePlugin
         public bool Equals(ref CValue other)
         {
             return other.intValue == intValue &&
-            other.floatValue == floatValue &&
-            other.stringValue == stringValue;
+                   Math.Abs(other.floatValue - floatValue) < Mathf.Epsilon &&
+                   other.stringValue == stringValue;
         }
     }
 
@@ -73,16 +74,16 @@ namespace LunarConsolePlugin
     }
 
     public enum CFlags
-    {   
+    {
         /// <summary>
         /// No flags (default value)
         /// </summary>
-        None      = 0,
+        None = 0,
 
         /// <summary>
         /// Won't be listed in UI
         /// </summary>
-        Hidden    = 1 << 1,
+        Hidden = 1 << 1,
 
         /// <summary>
         /// Don't save between sessions
@@ -133,7 +134,7 @@ namespace LunarConsolePlugin
             m_defaultValue = m_value;
         }
 
-        private CVar(string name, CVarType type, CFlags flags)
+        protected CVar(string name, CVarType type, CFlags flags)
         {
             if (name == null)
             {
@@ -232,7 +233,7 @@ namespace LunarConsolePlugin
 
         public int CompareTo(CVar other)
         {
-            return Name.CompareTo(other.Name);
+            return string.Compare(Name, other.Name, StringComparison.CurrentCulture);
         }
 
         #endregion
@@ -259,6 +260,12 @@ namespace LunarConsolePlugin
         public string DefaultValue
         {
             get { return m_defaultValue.stringValue; }
+            protected set { m_defaultValue.stringValue = value; }
+        }
+
+        public virtual bool IsEnum
+        {
+            get { return false; }
         }
 
         public bool IsString
@@ -277,11 +284,18 @@ namespace LunarConsolePlugin
                 m_value.floatValue = IsInt || IsFloat ? StringUtils.ParseFloat(value, 0.0f) : 0.0f;
                 m_value.intValue = IsInt || IsFloat ? (int)FloatValue : 0;
 
+                OnStringValueChanged(value);
+
                 if (changed)
                 {
                     NotifyValueChanged();
                 }
             }
+        }
+
+        public virtual string[] AllValues
+        {
+            get { return new string[] { this.Value }; }
         }
 
         public CVarValueRange Range
@@ -334,7 +348,7 @@ namespace LunarConsolePlugin
                 m_value.intValue = (int)value;
                 m_value.floatValue = value;
 
-                if (oldValue != value)
+                if (Math.Abs(oldValue - value) > Mathf.Epsilon)
                 {
                     NotifyValueChanged();
                 }
@@ -377,6 +391,10 @@ namespace LunarConsolePlugin
             get { return m_flags; }
         }
 
+        protected virtual void OnStringValueChanged(string value)
+        {
+        }
+
         #endregion
 
         #region Operators
@@ -399,6 +417,70 @@ namespace LunarConsolePlugin
         public static implicit operator bool(CVar cvar)
         {
             return cvar.m_value.intValue != 0;
+        }
+
+        #endregion
+    }
+
+    public class CVarEnum<T> : CVar where T : struct, IConvertible
+    {
+        private T m_enumValue;
+
+        public CVarEnum(string name, T defaultValue, CFlags flags = CFlags.None) :
+            base(name, CVarType.Enum, flags)
+        {
+            if (!typeof(T).IsEnum)
+            {
+                throw new ArgumentException("Default value must be enum");
+            }
+
+            var stringValue = defaultValue.ToString();
+            this.Value = stringValue;
+            this.DefaultValue = stringValue;
+        }
+
+        public override bool IsEnum
+        {
+            get { return true; }
+        }
+
+        public T EnumValue
+        {
+            get { return m_enumValue; }
+            set
+            {
+                this.Value = value.ToString();
+            }
+        }
+
+        protected override void OnStringValueChanged(string value)
+        {
+            try
+            {
+                if (value != null)
+                {
+                    m_enumValue = (T)Enum.Parse(typeof(T), value);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogErrorFormat("Unable to set value for {0} cvar: invalid value '{1}'", typeof(T).Name, value);
+            }
+        }
+
+        public override string[] AllValues
+        {
+            get
+            {
+                return Enum.GetNames(typeof(T));
+            }
+        }
+
+        #region Operators
+
+        public static implicit operator T(CVarEnum<T> cvar)
+        {
+            return cvar.m_enumValue;
         }
 
         #endregion
@@ -483,7 +565,7 @@ namespace LunarConsolePlugin
         }
     }
 
-    [AttributeUsage (AttributeTargets.Field, Inherited = true, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Field, Inherited = true, AllowMultiple = false)]
     public sealed class CVarRangeAttribute : Attribute
     {
         public readonly float min;
