@@ -422,11 +422,11 @@ namespace LunarConsolePlugin
         #endregion
     }
 
-    public class CVarEnum<T> : CVar where T : struct, IConvertible
+    public class CVar<T> : CVar where T : struct, IConvertible
     {
         private T m_enumValue;
 
-        public CVarEnum(string name, T defaultValue, CFlags flags = CFlags.None) :
+        public CVar(string name, T defaultValue, CFlags flags = CFlags.None) :
             base(name, CVarType.Enum, flags)
         {
             if (!typeof(T).IsEnum)
@@ -478,7 +478,7 @@ namespace LunarConsolePlugin
 
         #region Operators
 
-        public static implicit operator T(CVarEnum<T> cvar)
+        public static implicit operator T(CVar<T> cvar)
         {
             return cvar.m_enumValue;
         }
