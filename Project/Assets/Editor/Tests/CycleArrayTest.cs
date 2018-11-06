@@ -466,6 +466,18 @@ public class CycleArrayTest
         Assert.AreEqual(5, array.RealLength);
     }
 
+    [Test]
+    public void TestEach()
+    {
+        Assert.Fail("Implement me");
+    }
+
+    [Test]
+    public void TestOne()
+    {
+        Assert.Fail("Implement me");
+    }
+
     private void AssertArray<T>(CCycleArray<T> actual, params T[] expected)
     {
         Assert.AreEqual(expected.Length, actual.RealLength);

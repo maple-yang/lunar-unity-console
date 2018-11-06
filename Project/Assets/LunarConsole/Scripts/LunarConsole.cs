@@ -938,7 +938,7 @@ namespace LunarConsolePlugin
             public PlatformStandalone(Transform parent)
             {
                 m_parent = parent;
-                m_console = new Console();
+                m_console = new Console(1024);
             }
 
             public bool ShowConsole()

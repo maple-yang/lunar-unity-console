@@ -8,6 +8,8 @@ using UnityEngine;
 
 namespace LunarConsolePluginInternal
 {
+    delegate void ElementCallback<E>(ref E e, int index);
+
     class CCycleArray<E>
     {
         private E[] m_internalArray;
@@ -78,6 +80,31 @@ namespace LunarConsolePluginInternal
             }
 
             HeadIndex = trimmedHeadIndex;
+        }
+
+        public void Each(ElementCallback<E> callback)
+        {
+            if (callback == null)
+            {
+                throw new ArgumentNullException("callback");
+            }
+
+            for (int index = HeadIndex; index < HeadIndex + Length; ++index)
+            {
+                int arrayIndex = ToArrayIndex(index);
+                callback(ref m_internalArray[arrayIndex], index);
+            }
+        }
+
+        public void One(ElementCallback<E> callback, int index)
+        {
+            if (callback == null)
+            {
+                throw new ArgumentNullException("callback");
+            }
+
+            int arrayIndex = ToArrayIndex(index);
+            callback(ref m_internalArray[arrayIndex], index);
         }
 
         public E this[int index]
