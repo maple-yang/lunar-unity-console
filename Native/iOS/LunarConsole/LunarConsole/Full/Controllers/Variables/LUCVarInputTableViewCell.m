@@ -27,9 +27,6 @@
 
 @property (nonatomic, weak) IBOutlet UITextField * inputField;
 @property (nonatomic, weak) IBOutlet UIButton * resetButton;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint * resetButtonWidthConstraint;
-
-@property (nonatomic, assign) CGFloat resetButtonInitialWidth;
 
 @end
 
@@ -42,7 +39,6 @@
 {
     [super setupVariable:variable];
     
-    _resetButtonInitialWidth = _resetButtonWidthConstraint.constant;
     _inputField.text = variable.value;
     [self updateResetButton];
     
@@ -79,7 +75,7 @@
 
 - (void)updateResetButton
 {
-    _resetButtonWidthConstraint.constant = self.variable.isDefaultValue ? 0 : _resetButtonInitialWidth;
+    _resetButton.hidden = self.variable.isDefaultValue;
     [self layoutIfNeeded];
 }
 
