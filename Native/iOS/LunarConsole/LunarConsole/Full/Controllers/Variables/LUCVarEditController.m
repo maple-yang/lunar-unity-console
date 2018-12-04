@@ -30,10 +30,9 @@
 
 @property (nonatomic, weak) IBOutlet UISlider * slider;
 @property (nonatomic, weak) IBOutlet UITextField * textField;
+@property (nonatomic, weak) IBOutlet UIView * editContainerView;
+@property (nonatomic, weak) IBOutlet UIPickerView * pickerView;
 @property (nonatomic, weak) IBOutlet UILabel *errorLabel;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *errorLabelHeightConstraint;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *sliderLeadingConstraint;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *sliderWidthConstraint;
 
 @end
 
@@ -60,30 +59,38 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [LUTheme mainTheme].backgroundColorDark;
-    
-    if (_variable.type == LUCVarTypeFloat && _variable.hasRange)
+	
+	_pickerView.hidden = YES;
+	_editContainerView.hidden = YES;
+	_errorLabel.hidden = YES;
+	
+	if (_variable.type == LUCVarTypeFloat && _variable.hasRange)
     {
-        CGFloat min = _variable.range.min;
+		_editContainerView.hidden = NO;
+		
+		CGFloat min = _variable.range.min;
         CGFloat max = _variable.range.max;
         if (max - min > 0.000001)
         {
             _slider.minimumValue = min;
             _slider.maximumValue = max;
+			_slider.hidden = NO;
             _slider.value = [_variable.value floatValue];
-            _errorLabelHeightConstraint.constant = 0.0f;
         }
         else
         {
             _slider.enabled = NO;
+			_errorLabel.hidden = NO;
             _errorLabel.text = [NSString stringWithFormat:@"Invalid range [%g, %g]", min, max];
         }
     }
+	else if (_variable.type == LUCVarTypeEnum)
+	{
+		_pickerView.hidden = NO;
+	}
     else
-    {
-        _slider.hidden = YES;
-        _sliderLeadingConstraint.constant = 0.0;
-        _sliderWidthConstraint.constant = 0.0;
-        _errorLabelHeightConstraint.constant = 0.0f;
+	{
+		_editContainerView.hidden = NO;
     }
     
     _textField.text = _variable.value;
