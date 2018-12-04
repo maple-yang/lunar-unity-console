@@ -26,7 +26,6 @@
 @interface LUCVarInputTableViewCell () <LUConsolePopupControllerDelegate, LUCVarEditControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UITextField * inputField;
-@property (nonatomic, weak) IBOutlet UIButton * resetButton;
 
 @end
 
@@ -40,43 +39,19 @@
     [super setupVariable:variable];
     
     _inputField.text = variable.value;
-    [self updateResetButton];
-    
     LU_SET_ACCESSIBILITY_IDENTIFIER(_inputField, @"Variable Input Field");
-    LU_SET_ACCESSIBILITY_IDENTIFIER(_resetButton, @"Variable Reset Button");
+}
+
+- (void)resetVariable
+{
+	[super resetVariable];
+	_inputField.text = self.variable.defaultValue;
 }
 
 - (BOOL)isValidInputText:(NSString *)text
 {
     LU_SHOULD_IMPLEMENT_METHOD
     return NO;
-}
-
-#pragma mark -
-#pragma mark Actions
-
-- (IBAction)onResetButton:(id)sender
-{
-    _inputField.text = self.variable.defaultValue;
-    [self setVariableValue:self.variable.defaultValue];
-}
-
-#pragma mark -
-#pragma mark Setup value
-
-- (void)setVariableValue:(NSString *)value
-{
-    [super setVariableValue:value];
-    [self updateResetButton];
-}
-
-#pragma mark -
-#pragma mark Reset button
-
-- (void)updateResetButton
-{
-    _resetButton.hidden = self.variable.isDefaultValue;
-    [self layoutIfNeeded];
 }
 
 #pragma mark -

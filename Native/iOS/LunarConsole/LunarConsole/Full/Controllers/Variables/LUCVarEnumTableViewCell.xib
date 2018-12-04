@@ -8,11 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LUCVarBooleanTableViewCell">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LUCVarEnumTableViewCell">
             <connections>
                 <outlet property="resetButton" destination="rKa-Bk-Nep" id="j1s-d1-1TT"/>
                 <outlet property="titleLabel" destination="t44-Et-iu9" id="lyT-o5-anA"/>
-                <outlet property="toggleSwitch" destination="UFf-3X-yua" id="GeY-SH-NTM"/>
+                <outlet property="valueButton" destination="78h-1h-sbj" id="bQ1-fa-ifH"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -27,13 +27,13 @@
                         <rect key="frame" x="12" y="7" width="300" height="30"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t44-Et-iu9">
-                                <rect key="frame" x="0.0" y="0.0" width="205" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="134" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKa-Bk-Nep" userLabel="Button Reset">
-                                <rect key="frame" x="205" y="0.0" width="46" height="30"/>
+                                <rect key="frame" x="134" y="0.0" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="PEE-At-DEd"/>
                                     <constraint firstAttribute="height" constant="30" id="WMD-w7-W11"/>
@@ -46,12 +46,16 @@
                                     <action selector="onResetButton:" destination="-1" eventType="touchUpInside" id="UdG-vl-ugL"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UFf-3X-yua">
-                                <rect key="frame" x="251" y="0.0" width="51" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="78h-1h-sbj">
+                                <rect key="frame" x="180" y="0.0" width="120" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="qxm-FO-RKy"/>
+                                </constraints>
+                                <state key="normal" title="value"/>
                                 <connections>
-                                    <action selector="onToggleSwitch:" destination="-1" eventType="valueChanged" id="Hns-Uh-5cy"/>
+                                    <action selector="valueButtonPress:" destination="-1" eventType="touchUpInside" id="gpQ-5i-W7S"/>
                                 </connections>
-                            </switch>
+                            </button>
                         </subviews>
                     </stackView>
                 </subviews>

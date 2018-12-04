@@ -25,7 +25,8 @@
 
 @interface LUCVarTableViewCell ()
 
-@property (nonatomic, weak) IBOutlet UILabel *titleLabel;
+@property (nonatomic, weak) IBOutlet UILabel  * titleLabel;
+@property (nonatomic, weak) IBOutlet UIButton * resetButton;
 
 @property (nonatomic, weak) LUCVar *variable;
 
@@ -75,6 +76,10 @@
     _titleLabel.font = theme.actionsFont;
     _titleLabel.backgroundColor = [UIColor clearColor];
     _titleLabel.opaque = YES;
+	
+	[self updateResetButton];
+	
+	LU_SET_ACCESSIBILITY_IDENTIFIER(_resetButton, @"Variable Reset Button");
 }
 
 - (void)setVariableValue:(NSString *)value
@@ -89,8 +94,33 @@
         [LUNotificationCenter postNotificationName:LUActionControllerDidChangeVariable
                                             object:nil
                                           userInfo:userInfo];
+		
+		[self updateResetButton];
     }
 }
+
+- (void)resetVariable
+{
+	[self setVariableValue:self.variable.defaultValue];
+}
+
+#pragma mark -
+#pragma mark Reset button
+
+- (void)updateResetButton
+{
+	_resetButton.hidden = self.variable.isDefaultValue;
+	[self layoutIfNeeded];
+}
+
+#pragma mark -
+#pragma mark Actions
+
+- (IBAction)onResetButton:(id)sender
+{
+	[self resetVariable];
+}
+
 
 #pragma mark -
 #pragma mark Properties

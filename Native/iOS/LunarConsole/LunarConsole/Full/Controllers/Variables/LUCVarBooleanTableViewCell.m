@@ -40,6 +40,12 @@
     _toggleSwitch.on = [variable.value isEqualToString:@"1"];
 }
 
+- (void)resetVariable
+{
+	[super resetVariable];
+	_toggleSwitch.on = [self.variable.value isEqualToString:@"1"];
+}
+
 #pragma mark -
 #pragma mark Actions
 

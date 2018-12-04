@@ -26,6 +26,7 @@
 #import "LUCVarBooleanTableViewCell.h"
 #import "LUCVarInputTableViewCell.h"
 #import "LUCVarStringTableViewCell.h"
+#import "LUCVarEnumTableViewCell.h"
 
 @implementation LUCVarFactory
 
@@ -54,6 +55,7 @@
         case LUCVarTypeInteger: return [LUCVarInputTableViewCell class];
         case LUCVarTypeFloat:   return [LUCVarInputTableViewCell class];
         case LUCVarTypeString:  return [LUCVarStringTableViewCell class];
+		case LUCVarTypeEnum:    return [LUCVarEnumTableViewCell class];
         case LUCVarTypeUnknown: return NULL;
     }
 }
