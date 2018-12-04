@@ -26,7 +26,8 @@ typedef enum : NSUInteger {
     LUCVarTypeBoolean,
     LUCVarTypeInteger,
     LUCVarTypeFloat,
-    LUCVarTypeString
+    LUCVarTypeString,
+	LUCVarTypeEnum,
 } LUCVarType;
 
 typedef enum : NSUInteger {
@@ -51,6 +52,7 @@ extern NSString * const LUCVarTypeNameBoolean;
 extern NSString * const LUCVarTypeNameInteger;
 extern NSString * const LUCVarTypeNameFloat;
 extern NSString * const LUCVarTypeNameString;
+extern NSString * const LUCVarTypeNameEnum;
 extern NSString * const LUCVarTypeNameUnknown;
 
 @interface LUCVar : LUEntry
