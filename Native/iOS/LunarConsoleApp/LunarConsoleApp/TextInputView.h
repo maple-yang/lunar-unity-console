@@ -24,8 +24,10 @@
 @class TextInputView;
 
 typedef void (^TextInputViewCallback) (TextInputView *textView, NSString *text);
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 @interface TextInputView : UIAlertView
+#pragma clang diagnostic pop
 
 - (instancetype)initWithTitle:(NSString *)title message:(NSString *)message cancelButtonTitle:(NSString *)cancelButtonTitle callback:(TextInputViewCallback)callback;
 
