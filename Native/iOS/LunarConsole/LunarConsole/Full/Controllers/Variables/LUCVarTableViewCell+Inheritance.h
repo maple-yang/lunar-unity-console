@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)setVariableValue:(NSString *)value;
 - (void)updateUI;
+- (void)openEditor;
 
 @end
 

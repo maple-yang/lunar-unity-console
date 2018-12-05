@@ -24,7 +24,7 @@
 
 #import "Lunar-Full.h"
 
-@interface LUCVarInputTableViewCell () <LUConsolePopupControllerDelegate, LUCVarEditControllerDelegate>
+@interface LUCVarInputTableViewCell ()
 
 @property (nonatomic, weak) IBOutlet UITextField * inputField;
 
@@ -70,30 +70,8 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    LUCVarEditController *controller = [[LUCVarEditController alloc] initWithVariable:self.variable];
-    controller.delegate = self;
-    
-    LUConsolePopupController *popupController = [[LUConsolePopupController alloc] initWithContentController:controller];
-    popupController.popupDelegate = self;
-    [popupController presentFromController:self.presentingController animated:YES];
-    
+	[self openEditor];
     return NO;
-}
-
-#pragma mark -
-#pragma mark LUConsolePopupControllerDelegate
-
-- (void)popupControllerDidDismiss:(LUConsolePopupController *)controller
-{
-    [controller dismissAnimated:YES];
-}
-
-#pragma mark -
-#pragma mark LUCVarEditControllerDelegate
-
-- (void)editController:(LUCVarEditController *)controller didChangeValue:(NSString *)value
-{
-    [self setVariableValue:value];
 }
 
 @end

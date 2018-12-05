@@ -37,6 +37,7 @@
 
 - (void)updateUI
 {
+	[super updateUI];
 	_toggleSwitch.on = [self.variable.value isEqualToString:@"1"];
 }
 

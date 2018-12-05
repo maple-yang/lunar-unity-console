@@ -23,7 +23,7 @@
 
 #import "Lunar-Full.h"
 
-@interface LUCVarTableViewCell ()
+@interface LUCVarTableViewCell () <LUConsolePopupControllerDelegate, LUCVarEditControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UILabel  * titleLabel;
 @property (nonatomic, weak) IBOutlet UIButton * resetButton;
@@ -123,6 +123,35 @@
 - (IBAction)onResetButton:(id)sender
 {
 	[self resetVariable];
+}
+
+#pragma mark -
+#pragma mark Editor
+
+- (void)openEditor
+{
+	LUCVarEditController *controller = [[LUCVarEditController alloc] initWithVariable:self.variable];
+	controller.delegate = self;
+	
+	LUConsolePopupController *popupController = [[LUConsolePopupController alloc] initWithContentController:controller];
+	popupController.popupDelegate = self;
+	[popupController presentFromController:self.presentingController animated:YES];
+}
+
+#pragma mark -
+#pragma mark LUConsolePopupControllerDelegate
+
+- (void)popupControllerDidDismiss:(LUConsolePopupController *)controller
+{
+	[controller dismissAnimated:YES];
+}
+
+#pragma mark -
+#pragma mark LUCVarEditControllerDelegate
+
+- (void)editController:(LUCVarEditController *)controller didChangeValue:(NSString *)value
+{
+	[self setVariableValue:value];
 }
 
 #pragma mark -
