@@ -398,6 +398,7 @@
 		EF1D47A71E04A60B005BEC07 /* LUActionRegistryFilterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LUActionRegistryFilterTest.swift; sourceTree = "<group>"; };
 		EF2E66B121B1C79500EE14CD /* LUCVarEnumTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LUCVarEnumTableViewCell.h; sourceTree = "<group>"; };
 		EF2E66B221B1C79500EE14CD /* LUCVarEnumTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUCVarEnumTableViewCell.m; sourceTree = "<group>"; };
+		EF54AC4F21B7638300514680 /* LUCVarTableViewCell+Inheritance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LUCVarTableViewCell+Inheritance.h"; sourceTree = "<group>"; };
 		EFCAF0A521B6304000BAC939 /* LUCVarEnumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LUCVarEnumTableViewCell.xib; sourceTree = "<group>"; };
 		EFCAF0A621B630E500BAC939 /* LUCVarBooleanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LUCVarBooleanTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -539,6 +540,7 @@
 				4D02A7A11E496C93009F4998 /* LUCVarStringTableViewCell.h */,
 				4D02A7A21E496C93009F4998 /* LUCVarStringTableViewCell.m */,
 				4D02A7A31E496C93009F4998 /* LUCVarTableViewCell.h */,
+				EF54AC4F21B7638300514680 /* LUCVarTableViewCell+Inheritance.h */,
 				4D02A7A41E496C93009F4998 /* LUCVarTableViewCell.m */,
 				4D02A7A51E496C93009F4998 /* LUVariables.h */,
 			);

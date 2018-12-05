@@ -20,6 +20,7 @@
 //
 
 #import "LUCVarInputTableViewCell.h"
+#import "LUCVarTableViewCell+Inheritance.h"
 
 #import "Lunar-Full.h"
 
@@ -32,21 +33,23 @@
 @implementation LUCVarInputTableViewCell
 
 #pragma mark -
-#pragma mark Inheritance
+#pragma mark Variable
 
 - (void)setupVariable:(LUCVar *)variable
 {
     [super setupVariable:variable];
-    
-    _inputField.text = variable.value;
+	
     LU_SET_ACCESSIBILITY_IDENTIFIER(_inputField, @"Variable Input Field");
 }
 
-- (void)resetVariable
+- (void)updateUI
 {
-	[super resetVariable];
-	_inputField.text = self.variable.defaultValue;
+	[super updateUI];
+	_inputField.text = self.variable.value;
 }
+
+#pragma mark -
+#pragma mark Text Validation
 
 - (BOOL)isValidInputText:(NSString *)text
 {
@@ -90,7 +93,6 @@
 
 - (void)editController:(LUCVarEditController *)controller didChangeValue:(NSString *)value
 {
-    _inputField.text = value;
     [self setVariableValue:value];
 }
 

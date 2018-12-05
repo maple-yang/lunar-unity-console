@@ -33,5 +33,7 @@
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier;
 
 - (void)setupVariable:(LUCVar *)variable;
+- (void)setVariableValue:(NSString *)value;
+- (void)resetVariable;
 
 @end

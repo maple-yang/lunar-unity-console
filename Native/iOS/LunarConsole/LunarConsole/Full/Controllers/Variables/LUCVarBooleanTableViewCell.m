@@ -22,6 +22,7 @@
 #import "Lunar-Full.h"
 
 #import "LUCVarBooleanTableViewCell.h"
+#import "LUCVarTableViewCell+Inheritance.h"
 
 @interface LUCVarBooleanTableViewCell ()
 
@@ -34,15 +35,8 @@
 #pragma mark -
 #pragma mark Variable
 
-- (void)setupVariable:(LUCVar *)variable
+- (void)updateUI
 {
-    [super setupVariable:variable];
-    _toggleSwitch.on = [variable.value isEqualToString:@"1"];
-}
-
-- (void)resetVariable
-{
-	[super resetVariable];
 	_toggleSwitch.on = [self.variable.value isEqualToString:@"1"];
 }
 

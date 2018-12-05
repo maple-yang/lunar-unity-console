@@ -19,7 +19,7 @@
 //  limitations under the License.
 //
 
-#import "LUCVarTableViewCell.h"
+#import "LUCVarTableViewCell+Inheritance.h"
 
 #import "Lunar-Full.h"
 
@@ -45,7 +45,7 @@
 }
 
 #pragma mark -
-#pragma mark Loading
+#pragma mark Cell UI
 
 - (void)createCellView
 {
@@ -62,22 +62,26 @@
     return NSStringFromClass([self class]);
 }
 
+- (void)updateUI
+{
+	[self updateResetButton];
+}
+
 #pragma mark -
-#pragma mark Inheritance
+#pragma mark Variable
 
 - (void)setupVariable:(LUCVar *)variable
 {
     _variable = variable;
     
-    _titleLabel.text = variable.name;
-    
     LUTheme *theme = [LUTheme mainTheme];
+	_titleLabel.text = variable.name;
     _titleLabel.textColor = [variable hasFlag:LUCVarFlagsNoArchive] ? theme.variableVolatileTextColor : theme.variableTextColor;
     _titleLabel.font = theme.actionsFont;
     _titleLabel.backgroundColor = [UIColor clearColor];
     _titleLabel.opaque = YES;
 	
-	[self updateResetButton];
+	[self updateUI];
 	
 	LU_SET_ACCESSIBILITY_IDENTIFIER(_resetButton, @"Variable Reset Button");
 }
@@ -95,7 +99,7 @@
                                             object:nil
                                           userInfo:userInfo];
 		
-		[self updateResetButton];
+		[self updateUI];
     }
 }
 
@@ -120,7 +124,6 @@
 {
 	[self resetVariable];
 }
-
 
 #pragma mark -
 #pragma mark Properties
