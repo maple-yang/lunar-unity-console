@@ -64,6 +64,7 @@ extern NSString * const LUCVarTypeNameUnknown;
 @property (nonatomic, assign) LUCVarFlags flags;
 @property (nonatomic, assign) LUCVarRange range;
 @property (nonatomic, readonly) BOOL hasRange;
+@property (nonatomic, strong) NSArray<NSString *> *allValues;
 
 + (instancetype)variableWithId:(int)entryId name:(NSString *)name value:(NSString *)value defaultValue:(NSString *)defaultValue type:(LUCVarType)type cellClass:(Class)cellClass;
 - (instancetype)initWithId:(int)entryId name:(NSString *)name value:(NSString *)value defaultValue:(NSString *)defaultValue type:(LUCVarType)type cellClass:(Class)cellClass;

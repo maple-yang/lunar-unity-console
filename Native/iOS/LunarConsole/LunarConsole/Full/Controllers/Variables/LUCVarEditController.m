@@ -23,7 +23,7 @@
 
 #import "Lunar-Full.h"
 
-@interface LUCVarEditController () <UITextFieldDelegate>
+@interface LUCVarEditController () <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 {
     __weak LUCVar * _variable;
 }
@@ -87,6 +87,8 @@
 	else if (_variable.type == LUCVarTypeEnum)
 	{
 		_pickerView.hidden = NO;
+		_pickerView.delegate = self;
+		_pickerView.dataSource = self;
 	}
     else
 	{
@@ -165,6 +167,34 @@
 {
     [textField resignFirstResponder];
     return NO;
+}
+
+#pragma mark -
+#pragma mark UIPickerViewDataSource
+
+// returns the number of 'columns' to display.
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+	return 1;
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+	return _variable.allValues.count;
+}
+
+#pragma mark -
+#pragma mark UIPickerViewDelegate
+
+- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+	return _variable.allValues[row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+	NSLog(@"Selected value: %@", _variable.allValues[row]);
 }
 
 #pragma mark -

@@ -27,6 +27,7 @@
 #import "LUConsolePlugin.h"
 
 static LUConsolePlugin * _lunarConsolePlugin;
+static NSString * NSStringMake(const char *value);
 
 void __lunar_console_initialize(const char *targetNameStr, const char *methodNameStr, const char * versionStr, int capacity, int trimCount, const char *gestureStr, const char *settingsJsonStr)
 {
@@ -129,13 +130,14 @@ void __lunar_console_action_unregister(int actionId)
     }
 }
 
-void __lunar_console_cvar_register(int entryId, const char *nameStr, const char *typeStr, const char *valueStr, const char *defaultValueStr, int flags, BOOL hasRange, float min, float max)
+void __lunar_console_cvar_register(int entryId, const char *nameStr, const char *typeStr, const char *valueStr, const char *defaultValueStr, int flags, BOOL hasRange, float min, float max, const char *allValuesStr)
 {
     lunar_dispatch_main(^{
-        NSString *name = [[NSString alloc] initWithUTF8String:nameStr];
-        NSString *type = [[NSString alloc] initWithUTF8String:typeStr];
-        NSString *value = [[NSString alloc] initWithUTF8String:valueStr];
-        NSString *defaultValue = [[NSString alloc] initWithUTF8String:defaultValueStr];
+        NSString *name = NSStringMake(nameStr);
+        NSString *type = NSStringMake(typeStr);
+        NSString *value = NSStringMake(valueStr);
+        NSString *defaultValue = NSStringMake(defaultValueStr);
+		NSArray<NSString *> *allValues = [NSStringMake(allValuesStr) componentsSeparatedByString:@","];
         
         LUCVar *cvar = [_lunarConsolePlugin registerVariableWithId:entryId name:name type:type value:value defaultValue:defaultValue];
         cvar.flags = flags;
@@ -143,6 +145,7 @@ void __lunar_console_cvar_register(int entryId, const char *nameStr, const char 
         {
             cvar.range = LUMakeCVarRange(min, max);
         }
+		cvar.allValues = allValues;
     });
 }
 
@@ -152,4 +155,9 @@ void __lunar_console_cvar_update(int entryId, const char *valueStr)
         NSString *value = [[NSString alloc] initWithUTF8String:valueStr];
         [_lunarConsolePlugin setValue:value forVariableWithId:entryId];
     });
+}
+
+static NSString * NSStringMake(const char *value)
+{
+	return value != NULL ? [[NSString alloc] initWithUTF8String:value] : nil;
 }

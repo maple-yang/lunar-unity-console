@@ -295,7 +295,7 @@ namespace LunarConsolePlugin
 
         public virtual string[] AllValues
         {
-            get { return new string[] { this.Value }; }
+            get { return null; }
         }
 
         public CVarValueRange Range
