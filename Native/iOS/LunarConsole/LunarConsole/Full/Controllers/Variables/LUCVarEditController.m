@@ -93,6 +93,7 @@
     else
 	{
 		_editContainerView.hidden = NO;
+		_slider.hidden = YES;
     }
     
     _textField.text = _variable.value;
