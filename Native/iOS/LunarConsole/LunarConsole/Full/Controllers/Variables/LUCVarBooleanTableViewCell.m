@@ -46,7 +46,7 @@
 
 - (IBAction)onToggleSwitch:(id)sender
 {
-    [self setVariableValue:_toggleSwitch.isOn ? @"1" : @"0"];
+	self.variable.value = _toggleSwitch.isOn ? @"1" : @"0";
 }
 
 @end

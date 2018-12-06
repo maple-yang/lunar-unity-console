@@ -12,8 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LUCVarTableViewCell (Inheritance)
 
-- (void)setVariableValue:(NSString *)value;
-- (void)updateUI;
+- (void)updateUI NS_REQUIRES_SUPER;
 - (void)openEditor;
 
 @end

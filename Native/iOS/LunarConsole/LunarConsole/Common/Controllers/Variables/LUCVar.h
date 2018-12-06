@@ -55,6 +55,14 @@ extern NSString * const LUCVarTypeNameString;
 extern NSString * const LUCVarTypeNameEnum;
 extern NSString * const LUCVarTypeNameUnknown;
 
+@class LUCVar;
+
+@protocol LUCVarObserver <NSObject>
+
+- (void)cvarValueDidChange:(LUCVar *)cvar;
+
+@end
+
 @interface LUCVar : LUEntry
 
 @property (nonatomic, readonly) LUCVarType type;
@@ -74,5 +82,8 @@ extern NSString * const LUCVarTypeNameUnknown;
 
 - (void)resetToDefaultValue;
 - (BOOL)hasFlag:(LUCVarFlags)flag;
+
+- (void)registerObserver:(id<LUCVarObserver>)observer;
+- (void)unregisterObserver:(id<LUCVarObserver>)observer;
 
 @end

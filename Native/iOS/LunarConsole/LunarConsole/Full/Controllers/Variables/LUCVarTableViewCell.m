@@ -23,7 +23,7 @@
 
 #import "Lunar-Full.h"
 
-@interface LUCVarTableViewCell () <LUConsolePopupControllerDelegate, LUCVarEditControllerDelegate>
+@interface LUCVarTableViewCell () <LUCVarObserver, LUConsolePopupControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UILabel  * titleLabel;
 @property (nonatomic, weak) IBOutlet UIButton * resetButton;
@@ -57,6 +57,12 @@
     [self.contentView addSubview:view];
 }
 
+- (void)prepareForReuse
+{
+	[super prepareForReuse];
+	[_variable unregisterObserver:self];
+}
+
 - (NSString *)cellNibName
 {
     return NSStringFromClass([self class]);
@@ -81,31 +87,9 @@
     _titleLabel.backgroundColor = [UIColor clearColor];
     _titleLabel.opaque = YES;
 	
-	[self updateUI];
+	[_variable registerObserver:self];
 	
 	LU_SET_ACCESSIBILITY_IDENTIFIER(_resetButton, @"Variable Reset Button");
-}
-
-- (void)setVariableValue:(NSString *)value
-{
-    LUAssert(_variable);
-    if (_variable)
-    {
-        _variable.value = value;
-    
-        // post notification
-        NSDictionary *userInfo = @{ LUActionControllerDidChangeVariableKeyVariable : _variable };
-        [LUNotificationCenter postNotificationName:LUActionControllerDidChangeVariable
-                                            object:nil
-                                          userInfo:userInfo];
-		
-		[self updateUI];
-    }
-}
-
-- (void)resetVariable
-{
-	[self setVariableValue:self.variable.defaultValue];
 }
 
 #pragma mark -
@@ -122,7 +106,7 @@
 
 - (IBAction)onResetButton:(id)sender
 {
-	[self resetVariable];
+	[self.variable resetToDefaultValue];
 }
 
 #pragma mark -
@@ -130,12 +114,18 @@
 
 - (void)openEditor
 {
-	LUCVarEditController *controller = [[LUCVarEditController alloc] initWithVariable:self.variable];
-	controller.delegate = self;
-	
-	LUConsolePopupController *popupController = [[LUConsolePopupController alloc] initWithContentController:controller];
+	LUCVarEditController *editController = [[LUCVarEditController alloc] initWithVariable:self.variable];
+	LUConsolePopupController *popupController = [[LUConsolePopupController alloc] initWithContentController:editController];
 	popupController.popupDelegate = self;
 	[popupController presentFromController:self.presentingController animated:YES];
+}
+
+#pragma mark -
+#pragma mark LUCvarObserver
+
+- (void)cvarValueDidChange:(LUCVar *)cvar
+{
+	[self updateUI];
 }
 
 #pragma mark -
@@ -144,14 +134,6 @@
 - (void)popupControllerDidDismiss:(LUConsolePopupController *)controller
 {
 	[controller dismissAnimated:YES];
-}
-
-#pragma mark -
-#pragma mark LUCVarEditControllerDelegate
-
-- (void)editController:(LUCVarEditController *)controller didChangeValue:(NSString *)value
-{
-	[self setVariableValue:value];
 }
 
 #pragma mark -

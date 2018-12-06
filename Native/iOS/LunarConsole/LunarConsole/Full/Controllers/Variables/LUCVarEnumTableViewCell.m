@@ -26,14 +26,18 @@
 {
 	[super setupVariable:variable];
 	
-	[_valueButton setTitle:variable.value forState:UIControlStateNormal];
-	
 	LUTheme *theme = [LUTheme mainTheme];
 	UIColor *titleColor = [variable hasFlag:LUCVarFlagsNoArchive] ? theme.variableVolatileTextColor : theme.variableTextColor;
 	[_valueButton setTitleColor:titleColor forState:UIControlStateNormal];
 	[_valueButton.titleLabel setFont:theme.actionsFont];
 	
 	LU_SET_ACCESSIBILITY_IDENTIFIER(_valueButton, @"Variable Enum Button");
+}
+
+- (void)updateUI
+{
+	[super updateUI];
+	[_valueButton setTitle:self.variable.value forState:UIControlStateNormal];
 }
 
 #pragma mark -

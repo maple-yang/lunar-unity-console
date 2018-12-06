@@ -23,7 +23,7 @@
 
 #import "Lunar-Full.h"
 
-@interface LUCVarEditController () <UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface LUCVarEditController () <LUCVarObserver, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 {
     __weak LUCVar * _variable;
 }
@@ -43,6 +43,7 @@
     self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
         _variable = variable;
+		
         self.popupTitle = _variable.name;
         self.popupIcon = LUGetImage(@"lunar_console_icon_settings");
         self.popupButtons = @[
@@ -75,7 +76,6 @@
             _slider.minimumValue = min;
             _slider.maximumValue = max;
 			_slider.hidden = NO;
-            _slider.value = [_variable.value floatValue];
         }
         else
         {
@@ -89,14 +89,6 @@
 		_pickerView.hidden = NO;
 		_pickerView.delegate = self;
 		_pickerView.dataSource = self;
-		
-		// set selected value
-		NSArray *allValues = _variable.allValues;
-		NSUInteger valueIndex = [allValues indexOfObject:_variable.value];
-		if (valueIndex != NSNotFound)
-		{
-			[_pickerView selectRow:valueIndex inComponent:0 animated:NO];
-		}
 	}
     else
 	{
@@ -106,13 +98,25 @@
     _textField.text = _variable.value;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	[_variable registerObserver:self];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+	[super viewDidDisappear:YES];
+	[_variable unregisterObserver:self];
+}
+
 #pragma mark -
 #pragma mark Actions
 
 - (IBAction)sliderValueChanged:(id)sender
 {
     UISlider *slider = sender;
-    _textField.text = [[NSString alloc] initWithFormat:@"%g", slider.value];
+    _textField.text = [[NSString alloc] initWithFormat:@"%g", slider.value]; // we only update the value of variable when slider stopped moving
 }
 
 - (IBAction)sliderEditingFinished:(id)sender
@@ -120,27 +124,34 @@
     UISlider *slider = sender;
     NSString *value = [[NSString alloc] initWithFormat:@"%g", slider.value];
     
-    _textField.text = value;
-    [self notifyValueUpdate:value];
+    _variable.value = value;
 }
 
 - (void)onResetButton:(id)sender
 {
-    _textField.text = _variable.defaultValue;
-    if (_variable.type == LUCVarTypeFloat && _variable.hasRange)
-    {
-        _slider.value = [_variable.defaultValue floatValue];
-    }
+	[_variable resetToDefaultValue];
+}
+
+#pragma mark -
+#pragma mark LUCvarObserver
+
+- (void)cvarValueDidChange:(LUCVar *)cvar
+{
+	if (_variable.type == LUCVarTypeFloat)
+	{
+		_textField.text = _variable.value;
+		_slider.value = [_variable.value floatValue];
+	}
 	else if (_variable.type == LUCVarTypeEnum)
 	{
+		// set selected value
 		NSArray *allValues = _variable.allValues;
-		NSUInteger defaultIndex = [allValues indexOfObject:_variable.defaultValue];
-		if (defaultIndex != NSNotFound)
+		NSUInteger valueIndex = [allValues indexOfObject:_variable.value];
+		if (valueIndex != NSNotFound)
 		{
-			[_pickerView selectRow:defaultIndex inComponent:0 animated:YES];
+			[_pickerView selectRow:valueIndex inComponent:0 animated:YES];
 		}
 	}
-    [self notifyValueUpdate:_variable.defaultValue];
 }
 
 #pragma mark -
@@ -165,13 +176,12 @@
                 {
                     value = _variable.range.max;
                 }
-                _slider.value = value;
             }
-            [self notifyValueUpdate:[[NSString alloc] initWithFormat:@"%g", value]];
+            _variable.value = [[NSString alloc] initWithFormat:@"%g", value];
         }
         else
         {
-            [self notifyValueUpdate:valueText];
+			_variable.value = valueText;
         }
     }
     else
@@ -211,7 +221,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-	[self notifyValueUpdate:_variable.allValues[row]];
+	_variable.value = _variable.allValues[row];
 }
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view

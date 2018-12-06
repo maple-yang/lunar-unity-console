@@ -33,6 +33,7 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
 @interface LUCVar ()
 {
     Class _cellClass;
+	NSMutableArray * _observers;
 }
 
 @end
@@ -63,6 +64,7 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
         _cellClass = cellClass;
         _type = type;
         _range = LUMakeCVarRange(NAN, NAN);
+		_observers = [NSMutableArray new];
     }
     return self;
 }
@@ -72,7 +74,7 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
 
 - (void)resetToDefaultValue
 {
-    _value = _defaultValue;
+    self.value = _defaultValue;
 }
 
 #pragma mark -
@@ -128,7 +130,38 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
 }
 
 #pragma mark -
+#pragma mark Observers
+
+- (void)registerObserver:(id<LUCVarObserver>)observer
+{
+	if (![_observers containsObject:observer])
+	{
+		[_observers addObject:observer];
+		[observer cvarValueDidChange:self];
+	}
+}
+
+- (void)unregisterObserver:(id<LUCVarObserver>)observer
+{
+	[_observers removeObject:self];
+}
+
+- (void)notifyObservers
+{
+	for (id<LUCVarObserver> observer in _observers)
+	{
+		[observer cvarValueDidChange:self];
+	}
+}
+
+#pragma mark -
 #pragma mark Properties
+
+- (void)setValue:(NSString *)value
+{
+	_value = value;
+	[self notifyObservers];
+}
 
 - (BOOL)isDefaultValue
 {

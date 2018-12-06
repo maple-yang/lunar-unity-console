@@ -92,6 +92,19 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
 }
 
 #pragma mark -
+#pragma mark Observers
+
+- (void)registerObserver:(id<LUCVarObserver>)observer
+{
+	
+}
+
+- (void)unregisterObserver:(id<LUCVarObserver>)observer
+{
+	
+}
+
+#pragma mark -
 #pragma mark Properties
 
 - (BOOL)isDefaultValue
