@@ -353,7 +353,7 @@ namespace LunarConsolePlugin
                 {
                     foreach (var field in fields)
                     {
-                        if (!field.FieldType.IsAssignableFrom(typeof(CVar)))
+                        if (!field.FieldType.IsAssignableFrom(typeof(CVar)) && !field.FieldType.IsSubclassOf(typeof(CVar)))
                         {
                             continue;
                         }
