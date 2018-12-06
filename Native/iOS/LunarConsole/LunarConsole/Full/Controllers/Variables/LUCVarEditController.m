@@ -197,6 +197,21 @@
 	NSLog(@"Selected value: %@", _variable.allValues[row]);
 }
 
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+	UILabel *label = (UILabel *)view;
+	if (label == nil)
+	{
+		CGRect frame = CGRectMake(0, 0, CGRectGetWidth(pickerView.bounds), 46);
+		label = [[UILabel alloc] initWithFrame:frame];
+		label.textAlignment = NSTextAlignmentCenter;
+		label.textColor = [LUTheme mainTheme].actionsTextColor;
+		label.font = [LUTheme mainTheme].actionsFont;
+	}
+	label.text = _variable.allValues[row];
+	return label;
+}
+
 #pragma mark -
 #pragma mark Value
 
