@@ -89,6 +89,14 @@
 		_pickerView.hidden = NO;
 		_pickerView.delegate = self;
 		_pickerView.dataSource = self;
+		
+		// set selected value
+		NSArray *allValues = _variable.allValues;
+		NSUInteger valueIndex = [allValues indexOfObject:_variable.value];
+		if (valueIndex != NSNotFound)
+		{
+			[_pickerView selectRow:valueIndex inComponent:0 animated:NO];
+		}
 	}
     else
 	{
@@ -123,6 +131,15 @@
     {
         _slider.value = [_variable.defaultValue floatValue];
     }
+	else if (_variable.type == LUCVarTypeEnum)
+	{
+		NSArray *allValues = _variable.allValues;
+		NSUInteger defaultIndex = [allValues indexOfObject:_variable.defaultValue];
+		if (defaultIndex != NSNotFound)
+		{
+			[_pickerView selectRow:defaultIndex inComponent:0 animated:YES];
+		}
+	}
     [self notifyValueUpdate:_variable.defaultValue];
 }
 
@@ -194,7 +211,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-	NSLog(@"Selected value: %@", _variable.allValues[row]);
+	[self notifyValueUpdate:_variable.allValues[row]];
 }
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
