@@ -134,23 +134,54 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
 
 - (void)registerObserver:(id<LUCVarObserver>)observer
 {
-	if (![_observers containsObject:observer])
+	for (NSValue *reference in _observers)
 	{
-		[_observers addObject:observer];
-		[observer cvarValueDidChange:self];
+		id<LUCVarObserver> existingObserver = reference.nonretainedObjectValue;
+		if (observer == existingObserver)
+		{
+			return;
+		}
 	}
+	
+	[_observers addObject:[NSValue valueWithNonretainedObject:observer]]; // keep weak references
+	[observer cvarValueDidChange:self];
 }
 
 - (void)unregisterObserver:(id<LUCVarObserver>)observer
 {
-	[_observers removeObject:self];
+	for (NSValue *reference in _observers)
+	{
+		id<LUCVarObserver> existingObserver = reference.nonretainedObjectValue;
+		if (observer == existingObserver)
+		{
+			[_observers removeObject:reference];
+			return;
+		}
+	}
 }
 
 - (void)notifyObservers
 {
-	for (id<LUCVarObserver> observer in _observers)
+	NSUInteger lostReferenceCount = 0;
+	for (NSValue *reference in _observers)
 	{
+		id<LUCVarObserver> observer = [reference nonretainedObjectValue];
+		if (observer == nil)
+		{
+			lostReferenceCount++;
+			continue;
+		}
+		
 		[observer cvarValueDidChange:self];
+	}
+	
+	for (NSUInteger i = _observers.count; i >= 0 && lostReferenceCount > 0; --i)
+	{
+		if ([_observers[i] nonretainedObjectValue] == nil)
+		{
+			[_observers removeObjectAtIndex:i];
+			lostReferenceCount--;
+		}
 	}
 }
 
