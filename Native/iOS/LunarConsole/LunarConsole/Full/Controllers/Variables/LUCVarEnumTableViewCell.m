@@ -26,6 +26,8 @@
 {
 	[super setupVariable:variable];
 	
+	[_valueButton setTitle:variable.value forState:UIControlStateNormal];
+	
 	LUTheme *theme = [LUTheme mainTheme];
 	UIColor *titleColor = [variable hasFlag:LUCVarFlagsNoArchive] ? theme.variableVolatileTextColor : theme.variableTextColor;
 	[_valueButton setTitleColor:titleColor forState:UIControlStateNormal];
