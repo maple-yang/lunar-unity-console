@@ -41,6 +41,9 @@
 @property (nonatomic, weak) UIViewController * presentingController;
 @property (nonatomic, weak) id<LUCVarTableViewCellDelegate> delegate;
 
+@property (nonatomic, readonly, weak) UILabel  * titleLabel;
+@property (nonatomic, readonly, weak) UIButton * resetButton;
+
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier;
 
 - (void)setupVariable:(LUCVar *)variable atIndexPath:(NSIndexPath *)indexPath NS_REQUIRES_SUPER;

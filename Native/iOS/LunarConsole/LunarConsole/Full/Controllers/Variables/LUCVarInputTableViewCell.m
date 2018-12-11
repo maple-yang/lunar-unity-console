@@ -24,9 +24,17 @@
 
 #import "Lunar-Full.h"
 
+inline static float clampf(float value, float min, float max)
+{
+	if (value < min) return min;
+	if (value > max) return max;
+	return value;
+}
+
 @interface LUCVarInputTableViewCell ()
 
 @property (nonatomic, weak) IBOutlet UITextField * inputField;
+@property (nonatomic, weak) IBOutlet LUSlider    * rangeSlider;
 
 @end
 
@@ -39,6 +47,13 @@
 {
     [super setupVariable:variable atIndexPath:indexPath];
 	
+	self.rangeSlider.hidden = YES;
+	if ([variable hasRange])
+	{
+		self.rangeSlider.minimumValue = variable.range.min;
+		self.rangeSlider.maximumValue = variable.range.max;
+	}
+	
     LU_SET_ACCESSIBILITY_IDENTIFIER(_inputField, @"Variable Input Field");
 }
 
@@ -47,6 +62,10 @@
 	[super updateUI];
 	
 	_inputField.text = self.variable.value;
+	if ([self.variable hasRange])
+	{
+		self.rangeSlider.value = clampf(self.variable.floatValue, self.variable.range.min, self.variable.range.max);
+	}
 }
 
 #pragma mark -
@@ -62,6 +81,7 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+	[self setRangeSliderVisible:YES];
 	[self notifyWillStartEditing];
     return YES;
 }
@@ -72,6 +92,7 @@
 	BOOL valid = [self.variable isValidValue:text];
 	if (valid)
 	{
+		[self setRangeSliderVisible:NO];
 		[self notifyDidStopEditing];
 		self.variable.value = textField.text;
 	}
@@ -82,6 +103,18 @@
 {
 	[textField resignFirstResponder];
 	return NO;
+}
+
+#pragma mark -
+#pragma mark Helpers
+
+- (void)setRangeSliderVisible:(BOOL)visible
+{
+	if ([self.variable hasRange])
+	{
+		self.rangeSlider.hidden = !visible;
+		self.titleLabel.hidden = visible;
+	}
 }
 
 @end

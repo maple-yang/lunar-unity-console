@@ -112,6 +112,21 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
     return NO;
 }
 
+- (int)intValue
+{
+	return [self.value intValue];
+}
+
+- (float)floatValue
+{
+	return [self.value floatValue];
+}
+
+- (BOOL)boolValue
+{
+	return [self.value boolValue];
+}
+
 - (BOOL)hasRange
 {
     return NO;
