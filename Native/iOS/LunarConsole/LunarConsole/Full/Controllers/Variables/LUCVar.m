@@ -86,6 +86,21 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
 }
 
 #pragma mark -
+#pragma mark Value Check
+
+- (BOOL)isValidValue:(NSString *)value
+{
+	switch (_type) {
+		case LUCVarTypeInteger:
+			return LUStringTryParseInteger(value, NULL);
+		case LUCVarTypeFloat:
+			return LUStringTryParseFloat(value, NULL);
+		default:
+			return YES;
+	}
+}
+
+#pragma mark -
 #pragma mark UITableView
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellAtIndexPath:(NSIndexPath *)indexPath

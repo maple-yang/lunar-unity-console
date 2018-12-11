@@ -251,6 +251,8 @@
             return LUStringTryParseFloat(value, NULL);
         case LUCVarTypeInteger:
             return LUStringTryParseInteger(value, NULL);
+		case LUCVarTypeEnum:
+			return YES; // FIXME: check value
         default:
             return YES;
     }

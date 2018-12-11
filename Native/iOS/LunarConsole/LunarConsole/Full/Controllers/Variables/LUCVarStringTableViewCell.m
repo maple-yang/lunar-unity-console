@@ -23,12 +23,4 @@
 
 @implementation LUCVarStringTableViewCell
 
-#pragma mark -
-#pragma mark Inheritance
-
-- (BOOL)isValidInputText:(NSString *)text
-{
-    return YES;
-}
-
 @end

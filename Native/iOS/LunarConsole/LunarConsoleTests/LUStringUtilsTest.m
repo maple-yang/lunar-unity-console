@@ -49,6 +49,8 @@ inline static BOOL isEpsilonEqual(float a, float b)
     NSInteger result = 0;
     XCTAssertTrue(LUStringTryParseInteger(@"-123456", &result));
     XCTAssertEqual(-123456, result);
+	XCTAssertTrue(LUStringTryParseInteger(@"+123456", &result));
+	XCTAssertEqual(123456, result);
 }
 
 - (void)testParseInvalidInteger
@@ -57,6 +59,8 @@ inline static BOOL isEpsilonEqual(float a, float b)
     XCTAssertFalse(LUStringTryParseInteger(@"x123456", &result));
     XCTAssertFalse(LUStringTryParseInteger(@"123x456", &result));
     XCTAssertFalse(LUStringTryParseInteger(@"123456x", &result));
+	XCTAssertFalse(LUStringTryParseInteger(@"--123456", &result));
+	XCTAssertFalse(LUStringTryParseInteger(@"++123456", &result));
     XCTAssertFalse(LUStringTryParseInteger(@"", &result));
 }
 
@@ -64,6 +68,12 @@ inline static BOOL isEpsilonEqual(float a, float b)
 {
     NSInteger result = 0;
     XCTAssertFalse(LUStringTryParseInteger(@"3.14", &result));
+}
+
+- (void)testTrimWhitespaces
+{
+	XCTAssertEqualObjects(LUStringTrim(@"1234"), @"1234");
+	XCTAssertEqualObjects(LUStringTrim(@"  1234 "), @"1234");
 }
 
 #pragma mark -

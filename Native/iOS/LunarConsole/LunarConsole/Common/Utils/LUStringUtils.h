@@ -23,4 +23,5 @@
 
 BOOL LUStringTryParseInteger(NSString *str, NSInteger *outResult);
 BOOL LUStringTryParseFloat(NSString *str, float *outResult);
+NSString * LUStringTrim(NSString *str);
 NSString *LUSerializeDictionaryToString(NSDictionary *data);

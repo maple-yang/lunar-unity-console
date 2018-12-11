@@ -38,8 +38,7 @@ BOOL LUStringTryParseInteger(NSString *str, NSInteger *outResult)
     if (number)
     {
         // FIXME: find a better way of telling if number is integer
-        NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
-        if ([str rangeOfString:decimalSeparator].location == NSNotFound)
+        if (fabs(number.floatValue - number.integerValue) < 0.0000000000001)
         {
             if (outResult) *outResult = number.integerValue;
             return YES;
@@ -59,6 +58,11 @@ BOOL LUStringTryParseFloat(NSString *str, float *outResult)
     }
     
     return NO;
+}
+
+NSString * LUStringTrim(NSString *str)
+{
+	return [str stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
 NSString *LUSerializeDictionaryToString(NSDictionary *data)

@@ -50,15 +50,6 @@
 }
 
 #pragma mark -
-#pragma mark Text Validation
-
-- (BOOL)isValidInputText:(NSString *)text
-{
-    LU_SHOULD_IMPLEMENT_METHOD
-    return NO;
-}
-
-#pragma mark -
 #pragma mark Cell loading
 
 - (NSString *)cellNibName
@@ -77,8 +68,14 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
-	[self notifyDidStopEditing];
-	return YES;
+	NSString *text = LUStringTrim(textField.text);
+	BOOL valid = [self.variable isValidValue:text];
+	if (valid)
+	{
+		[self notifyDidStopEditing];
+		self.variable.value = textField.text;
+	}
+	return valid;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

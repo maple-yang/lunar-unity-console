@@ -82,6 +82,7 @@ extern NSString * const LUCVarTypeNameUnknown;
 
 - (void)resetToDefaultValue;
 - (BOOL)hasFlag:(LUCVarFlags)flag;
+- (BOOL)isValidValue:(NSString *)value;
 
 - (void)registerObserver:(id<LUCVarObserver>)observer;
 - (void)unregisterObserver:(id<LUCVarObserver>)observer;

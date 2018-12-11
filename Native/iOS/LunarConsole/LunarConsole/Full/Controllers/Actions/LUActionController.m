@@ -375,8 +375,6 @@ static UIViewAnimationOptions UIViewAnimationOptionsFromCurve(UIViewAnimationCur
 	NSTimeInterval duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
 	UIViewAnimationCurve curve = [notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
 	
-	NSLog(@"%g", CGRectGetHeight(frameEnd));
-	
 	[UIView animateWithDuration:duration
 						  delay:0.0
 						options:UIViewAnimationOptionsFromCurve(curve)
