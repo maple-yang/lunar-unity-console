@@ -19,7 +19,6 @@
 		4D02A7B81E496C93009F4998 /* LUCVarBooleanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02A7961E496C93009F4998 /* LUCVarBooleanTableViewCell.m */; };
 		4D02A7B91E496C93009F4998 /* LUCVarFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02A7991E496C93009F4998 /* LUCVarFactory.m */; };
 		4D02A7BB1E496C93009F4998 /* LUCVarInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02A79D1E496C93009F4998 /* LUCVarInputTableViewCell.m */; };
-		4D02A7BD1E496C93009F4998 /* LUCVarStringTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02A7A21E496C93009F4998 /* LUCVarStringTableViewCell.m */; };
 		4D02A7BE1E496C93009F4998 /* LUCVarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02A7A41E496C93009F4998 /* LUCVarTableViewCell.m */; };
 		4D02A7C31E496DF7009F4998 /* LUActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02A7C21E496DF7009F4998 /* LUActionController.m */; };
 		4D02A7C71E496FCA009F4998 /* LUActionControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02A7C61E496FCA009F4998 /* LUActionControllerBase.m */; };
@@ -190,8 +189,6 @@
 		4D02A79C1E496C93009F4998 /* LUCVarInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUCVarInputTableViewCell.h; sourceTree = "<group>"; };
 		4D02A79D1E496C93009F4998 /* LUCVarInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUCVarInputTableViewCell.m; sourceTree = "<group>"; };
 		4D02A79E1E496C93009F4998 /* LUCVarInputTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LUCVarInputTableViewCell.xib; sourceTree = "<group>"; };
-		4D02A7A11E496C93009F4998 /* LUCVarStringTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUCVarStringTableViewCell.h; sourceTree = "<group>"; };
-		4D02A7A21E496C93009F4998 /* LUCVarStringTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUCVarStringTableViewCell.m; sourceTree = "<group>"; };
 		4D02A7A31E496C93009F4998 /* LUCVarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUCVarTableViewCell.h; sourceTree = "<group>"; };
 		4D02A7A41E496C93009F4998 /* LUCVarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUCVarTableViewCell.m; sourceTree = "<group>"; };
 		4D02A7A51E496C93009F4998 /* LUVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUVariables.h; sourceTree = "<group>"; };
@@ -537,8 +534,6 @@
 				4D02A79C1E496C93009F4998 /* LUCVarInputTableViewCell.h */,
 				4D02A79D1E496C93009F4998 /* LUCVarInputTableViewCell.m */,
 				4D02A79E1E496C93009F4998 /* LUCVarInputTableViewCell.xib */,
-				4D02A7A11E496C93009F4998 /* LUCVarStringTableViewCell.h */,
-				4D02A7A21E496C93009F4998 /* LUCVarStringTableViewCell.m */,
 				4D02A7A31E496C93009F4998 /* LUCVarTableViewCell.h */,
 				EF54AC4F21B7638300514680 /* LUCVarTableViewCell+Inheritance.h */,
 				4D02A7A41E496C93009F4998 /* LUCVarTableViewCell.m */,
@@ -1006,7 +1001,7 @@
 					};
 					844741B31B719C3100F5ABD3 = {
 						CreatedOnToolsVersion = 6.4;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -1119,7 +1114,6 @@
 				4D02A7B91E496C93009F4998 /* LUCVarFactory.m in Sources */,
 				4DD4FBFB1DFB932C00032A29 /* LUPassTouchView.m in Sources */,
 				4DD4FBE91DFB932C00032A29 /* lunar_unity_native_interface.m in Sources */,
-				4D02A7BD1E496C93009F4998 /* LUCVarStringTableViewCell.m in Sources */,
 				4DD4FC1B1DFB932C00032A29 /* LUSortedList.m in Sources */,
 				4DD4FBF31DFB932C00032A29 /* LUExceptionWarningController.m in Sources */,
 				4DD4FC191DFB932C00032A29 /* LUSerializationUtils.m in Sources */,
@@ -1343,7 +1337,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LunarConsoleTests/LunarConsoleTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1361,7 +1356,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.spacemadness.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "LunarConsoleTests/LunarConsoleTests-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

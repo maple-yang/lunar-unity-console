@@ -30,5 +30,4 @@
 #import "LUCVarFactory.h"
 #import "LUCVarInputTableViewCell.h"
 #import "LUCVarEditController.h"
-#import "LUCVarStringTableViewCell.h"
 #import "LUCVarTableViewCell.h"
