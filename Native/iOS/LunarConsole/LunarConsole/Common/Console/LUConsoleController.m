@@ -237,6 +237,16 @@ NSString * const LUConsoleControllerDidResizeNotification = @"LUConsoleControlle
                              selector:@selector(consolePopupControllerWillDisappearNotification:)
                                  name:LUConsolePopupControllerWillDisappearNotification
                                object:nil];
+	
+	[LUNotificationCenter addObserver:self
+							 selector:@selector(consolePopupControllerWillAppearNotification:)
+								 name:LUConsoleVariableWillBeginEditingNotification
+							   object:nil];
+	
+	[LUNotificationCenter addObserver:self
+							 selector:@selector(consolePopupControllerWillDisappearNotification:)
+								 name:LUConsoleVariableDidEndEditingNotification
+							   object:nil];
 }
 
 - (void)unregisterNotifications

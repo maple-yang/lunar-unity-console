@@ -24,8 +24,12 @@
 @class LUConsolePopupButton;
 @class LUConsolePopupController;
 
-extern NSString * const LUConsolePopupControllerWillAppearNotification;
-extern NSString * const LUConsolePopupControllerWillDisappearNotification;
+extern NSNotificationName const LUConsolePopupControllerWillAppearNotification;
+extern NSNotificationName const LUConsolePopupControllerWillDisappearNotification;
+extern NSNotificationName const LUConsoleVariableWillBeginEditingNotification;
+extern NSNotificationName const LUConsoleVariableDidEndEditingNotification;
+
+extern NSString * const LUConsoleVariableKeyVariable;
 
 @protocol LUConsolePopupControllerDelegate <NSObject>
 
