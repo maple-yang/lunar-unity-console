@@ -28,7 +28,7 @@
 
 - (instancetype)initWithId:(int)actionId name:(NSString *)name;
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellAtIndex:(NSUInteger)index;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellAtIndexPath:(NSIndexPath *)indexPath;
 - (CGSize)cellSizeForTableView:(UITableView *)tableView;
 
 - (NSComparisonResult)compare:(LUEntry *)other;

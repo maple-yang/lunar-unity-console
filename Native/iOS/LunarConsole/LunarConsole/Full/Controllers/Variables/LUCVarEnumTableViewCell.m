@@ -22,9 +22,9 @@
 #pragma mark -
 #pragma mark Variable
 
-- (void)setupVariable:(LUCVar *)variable
+- (void)setupVariable:(LUCVar *)variable atIndexPath:(NSIndexPath *)indexPath
 {
-	[super setupVariable:variable];
+	[super setupVariable:variable atIndexPath:indexPath];
 	
 	LUTheme *theme = [LUTheme mainTheme];
 	UIColor *titleColor = [variable hasFlag:LUCVarFlagsNoArchive] ? theme.variableVolatileTextColor : theme.variableTextColor;
@@ -45,7 +45,7 @@
 
 - (IBAction)valueButtonPress:(id)sender
 {
-	[self openEditor];
+	// [self openEditor];
 }
 
 @end

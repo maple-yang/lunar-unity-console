@@ -13,7 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LUCVarTableViewCell (Inheritance)
 
 - (void)updateUI NS_REQUIRES_SUPER;
-- (void)openEditor;
+- (void)notifyWillStartEditing;
+- (void)notifyDidStopEditing;
 
 @end
 

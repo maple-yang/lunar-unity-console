@@ -35,9 +35,9 @@
 #pragma mark -
 #pragma mark Variable
 
-- (void)setupVariable:(LUCVar *)variable
+- (void)setupVariable:(LUCVar *)variable atIndexPath:(NSIndexPath *)indexPath
 {
-    [super setupVariable:variable];
+    [super setupVariable:variable atIndexPath:indexPath];
 	
     LU_SET_ACCESSIBILITY_IDENTIFIER(_inputField, @"Variable Input Field");
 }
@@ -45,6 +45,7 @@
 - (void)updateUI
 {
 	[super updateUI];
+	
 	_inputField.text = self.variable.value;
 }
 
@@ -70,8 +71,20 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-	[self openEditor];
-    return NO;
+	[self notifyWillStartEditing];
+    return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+	[self notifyDidStopEditing];
+	return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	return NO;
 }
 
 @end

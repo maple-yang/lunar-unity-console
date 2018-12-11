@@ -22,16 +22,27 @@
 #import <UIKit/UIKit.h>
 
 @class LUCVar;
+@class LUCVarTableViewCell;
+
+@protocol LUCVarTableViewCellDelegate <NSObject>
+
+@optional
+- (void)cellWillBeginEditing:(LUCVarTableViewCell *)cell;
+- (void)cellDidEndEditing:(LUCVarTableViewCell *)cell;
+
+@end
 
 @interface LUCVarTableViewCell : UITableViewCell
 
+@property (nonatomic, readonly) NSIndexPath * indexPath;
 @property (nonatomic, readonly) NSString * cellNibName;
 @property (nonatomic, readonly, weak) LUCVar *variable;
 @property (nonatomic, readonly) int variableId;
 @property (nonatomic, weak) UIViewController * presentingController;
+@property (nonatomic, weak) id<LUCVarTableViewCellDelegate> delegate;
 
 - (instancetype)initWithReuseIdentifier:(NSString *)reuseIdentifier;
 
-- (void)setupVariable:(LUCVar *)variable;
+- (void)setupVariable:(LUCVar *)variable atIndexPath:(NSIndexPath *)indexPath NS_REQUIRES_SUPER;
 
 @end

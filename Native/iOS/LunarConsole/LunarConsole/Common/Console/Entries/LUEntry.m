@@ -77,7 +77,7 @@
 #pragma mark -
 #pragma mark UITableView
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellAtIndex:(NSUInteger)index
+- (UITableViewCell *)tableView:(UITableView *)tableView cellAtIndexPath:(NSIndexPath *)indexPath
 {
     LU_SHOULD_IMPLEMENT_METHOD
     return nil;

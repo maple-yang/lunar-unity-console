@@ -28,9 +28,24 @@ static const NSInteger kSectionIndexActions = 0;
 static const NSInteger kSectionIndexVariables = 1;
 static const NSInteger kSectionCount = 2;
 
-@interface LUActionController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, LUActionRegistryFilterDelegate>
+static UIViewAnimationOptions UIViewAnimationOptionsFromCurve(UIViewAnimationCurve curve) {
+	switch (curve) {
+		case UIViewAnimationCurveEaseIn:
+			return UIViewAnimationOptionCurveEaseIn;
+		case UIViewAnimationCurveEaseOut:
+			return UIViewAnimationOptionCurveEaseOut;
+		case UIViewAnimationCurveEaseInOut:
+			return UIViewAnimationOptionCurveEaseInOut;
+		case UIViewAnimationCurveLinear:
+			return UIViewAnimationOptionCurveLinear;
+	}
+	return 0;
+}
+
+@interface LUActionController () <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, LUActionRegistryFilterDelegate, LUCVarTableViewCellDelegate>
 {
     LUActionRegistryFilter * _actionRegistryFilter;
+	NSIndexPath * _editingCellIndexPath;
 }
 
 @end
@@ -82,6 +97,14 @@ static const NSInteger kSectionCount = 2;
                              selector:@selector(consoleControllerDidResizeNotification:)
                                  name:LUConsoleControllerDidResizeNotification
                                object:nil];
+	[LUNotificationCenter addObserver:self
+							 selector:@selector(keyboardWillShowNotification:)
+								 name:UIKeyboardWillShowNotification
+							   object:nil];
+	[LUNotificationCenter addObserver:self
+							 selector:@selector(keyboardWillHideNotification:)
+								 name:UIKeyboardWillHideNotification
+							   object:nil];
 }
 
 - (void)unregisterNotifications
@@ -158,7 +181,9 @@ static const NSInteger kSectionCount = 2;
     
     if (section == kSectionIndexVariables)
     {
-        return [self tableView:tableView variableCellForRowAtIndex:index];
+		LUCVarTableViewCell *cell = (LUCVarTableViewCell *) [self tableView:tableView variableCellForRowAtIndexPath:indexPath];
+		cell.delegate = self;
+		return cell;
     }
     
     LUAssertMsgv(section < kSectionCount, @"Unexpected section index: %ld", (long) section);
@@ -265,6 +290,19 @@ static const NSInteger kSectionCount = 2;
 }
 
 #pragma mark -
+#pragma mark LUCVarTableViewCellDelegate
+
+- (void)cellWillBeginEditing:(LUCVarTableViewCell *)cell
+{
+	_editingCellIndexPath = cell.indexPath;
+}
+
+- (void)cellDidEndEditing:(LUCVarTableViewCell *)cell
+{
+	_editingCellIndexPath = nil;
+}
+
+#pragma mark -
 #pragma mark Actions
 
 - (UITableViewCell *)tableView:(UITableView *)tableView actionCellForRowAtIndex:(NSInteger)index
@@ -302,12 +340,13 @@ static const NSInteger kSectionCount = 2;
 #pragma mark -
 #pragma mark Variables
 
-- (UITableViewCell *)tableView:(UITableView *)tableView variableCellForRowAtIndex:(NSInteger)index
+- (UITableViewCell *)tableView:(UITableView *)tableView variableCellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+	NSUInteger index = indexPath.row;
     LUTheme *theme = [LUTheme mainTheme];
     
     LUCVar *cvar = [self variableAtIndex:index];
-    LUCVarTableViewCell *cell = (LUCVarTableViewCell *)[cvar tableView:tableView cellAtIndex:index];
+    LUCVarTableViewCell *cell = (LUCVarTableViewCell *)[cvar tableView:tableView cellAtIndexPath:indexPath];
     cell.contentView.backgroundColor = index % 2 == 0 ? theme.actionsBackgroundColorDark : theme.actionsBackgroundColorLight;
     cell.presentingController = self;
     return cell;
@@ -326,6 +365,45 @@ static const NSInteger kSectionCount = 2;
 - (NSInteger)variableCount
 {
     return _actionRegistryFilter.registry.variables.count;
+}
+
+#pragma mark -
+#pragma mark Notifications
+
+- (void)keyboardWillShowNotification:(NSNotification *)notification {
+	CGRect frameEnd = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+	NSTimeInterval duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+	UIViewAnimationCurve curve = [notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
+	
+	NSLog(@"%g", CGRectGetHeight(frameEnd));
+	
+	[UIView animateWithDuration:duration
+						  delay:0.0
+						options:UIViewAnimationOptionsFromCurve(curve)
+					 animations:^{
+						 CGFloat offset = CGRectGetHeight(frameEnd) - self.tableViewBottomConstraint.constant;
+						 UIEdgeInsets insets = UIEdgeInsetsMake(0, 0, offset, 0.0);
+						 self.tableView.contentInset = insets;
+						 self.tableView.scrollIndicatorInsets = insets;
+						 [self.tableView scrollToRowAtIndexPath:_editingCellIndexPath
+											   atScrollPosition:UITableViewScrollPositionTop
+													   animated:YES];
+					 }
+					 completion:nil];
+}
+
+- (void)keyboardWillHideNotification:(NSNotification *)notification {
+	NSTimeInterval duration = [notification.userInfo[UIKeyboardAnimationDurationUserInfoKey] doubleValue];
+	UIViewAnimationCurve curve = [notification.userInfo[UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
+	
+	[UIView animateWithDuration:duration
+						  delay:0.0
+						options:UIViewAnimationOptionsFromCurve(curve)
+					 animations:^{
+						 self.tableView.contentInset = UIEdgeInsetsZero;
+						 self.tableView.scrollIndicatorInsets = UIEdgeInsetsZero;
+					 }
+					 completion:nil];
 }
 
 #pragma mark -

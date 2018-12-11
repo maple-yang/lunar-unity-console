@@ -76,9 +76,10 @@
 #pragma mark -
 #pragma mark Variable
 
-- (void)setupVariable:(LUCVar *)variable
+- (void)setupVariable:(LUCVar *)variable atIndexPath:(NSIndexPath *)indexPath
 {
     _variable = variable;
+	_indexPath = indexPath;
     
     LUTheme *theme = [LUTheme mainTheme];
 	_titleLabel.text = variable.name;
@@ -110,7 +111,21 @@
 }
 
 #pragma mark -
-#pragma mark Editor
+#pragma mark Editing
+
+- (void)notifyWillStartEditing
+{
+	if ([_delegate respondsToSelector:@selector(cellWillBeginEditing:)]) {
+		[_delegate cellWillBeginEditing:self];
+	}
+}
+
+- (void)notifyDidStopEditing
+{
+	if ([_delegate respondsToSelector:@selector(cellDidEndEditing:)]) {
+		[_delegate cellDidEndEditing:self];
+	}
+}
 
 - (void)openEditor
 {

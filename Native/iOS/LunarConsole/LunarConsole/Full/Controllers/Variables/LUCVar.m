@@ -88,7 +88,7 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
 #pragma mark -
 #pragma mark UITableView
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellAtIndex:(NSUInteger)index
+- (UITableViewCell *)tableView:(UITableView *)tableView cellAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *identifier = NSStringFromClass(_cellClass);
     LUCVarTableViewCell *cell = (LUCVarTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
@@ -97,7 +97,7 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
         cell = [[_cellClass alloc] initWithReuseIdentifier:identifier];
     }
     
-    [cell setupVariable:self];
+    [cell setupVariable:self atIndexPath:indexPath];
     
     return cell;
 }
