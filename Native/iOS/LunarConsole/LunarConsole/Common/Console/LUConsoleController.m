@@ -155,7 +155,8 @@ NSString * const LUConsoleControllerDidResizeNotification = @"LUConsoleControlle
                                                             relatedBy:NSLayoutRelationEqual
                                                                toItem:_scrollView
                                                             attribute:NSLayoutAttributeWidth
-                                                           multiplier:1.0                                      constant:0]];
+                                                           multiplier:1.0
+															 constant:0]];
         
         // height
         [constraints addObject:[NSLayoutConstraint constraintWithItem:controller.view
@@ -163,7 +164,8 @@ NSString * const LUConsoleControllerDidResizeNotification = @"LUConsoleControlle
                                                             relatedBy:NSLayoutRelationEqual
                                                                toItem:_scrollView
                                                             attribute:NSLayoutAttributeHeight
-                                                           multiplier:1.0                                      constant:0]];
+                                                           multiplier:1.0
+															 constant:0]];
         
         // vertical center
         [constraints addObject:[NSLayoutConstraint constraintWithItem:controller.view
@@ -171,7 +173,8 @@ NSString * const LUConsoleControllerDidResizeNotification = @"LUConsoleControlle
                                                             relatedBy:NSLayoutRelationEqual
                                                                toItem:_scrollView
                                                             attribute:NSLayoutAttributeCenterY
-                                                           multiplier:1.0                                      constant:0]];
+                                                           multiplier:1.0
+															 constant:0]];
         
         // left
         if (prevController)
