@@ -479,17 +479,6 @@ class LUActionRegistryFilterTest: TestCase, LUActionRegistryFilterDelegate {
 
     // MARK: - Assertion Helpers
     
-    func assertResult(expected: String...) {
-        let message = "Expected: '\(expected.joined(separator: ","))' but was '\(self.result.componentsJoined(by: ","))'"
-        
-        XCTAssertEqual(expected.count, self.result.count, message)
-        for i in 0..<expected.count {
-            XCTAssertEqual(expected[i], self.result[i] as! String, message)
-        }
-        
-        self.result.removeAllObjects()
-    }
-    
     func assertNoActions() {
         XCTAssert(_registryFilter.actions.count == 0)
     }

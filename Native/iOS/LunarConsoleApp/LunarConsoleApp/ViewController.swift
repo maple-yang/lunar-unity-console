@@ -75,6 +75,7 @@ class ViewController: LUViewController {
         plugin.registerVariable(withId: 6, name: "float", type: LUCVarTypeNameFloat, value: "3.14")
         plugin.registerVariable(withId: 7, name: "boolean", type: LUCVarTypeNameBoolean, value: "true")
         plugin.registerVariable(withId: 8, name: "int", type: LUCVarTypeNameInteger, value: "10")
+		plugin.registerVariable(withId: 9, name: "enum", type: LUCVarTypeNameEnum, value: "Two")?.allValues = ["One", "Two", "Three"]
         let rangeVariable = plugin.registerVariable(withId: 9, name: "range", type: LUCVarTypeNameFloat, value: "3.0")
         rangeVariable?.range = LUMakeCVarRange(1.0, 5.0)
         let volatileVariable = plugin.registerVariable(withId: 9, name: "volatile", type: LUCVarTypeNameInteger, value: "25")

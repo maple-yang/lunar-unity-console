@@ -29,5 +29,6 @@
 
 - (void)addResult:(id)obj;
 - (void)assertResult:(id)first, ...;
+- (void)assertResultArray:(NSArray *)expected;
 
 @end

@@ -135,6 +135,10 @@
 		EF77182B21C20A7C00C4F687 /* LUWeakReference.m in Sources */ = {isa = PBXBuildFile; fileRef = EF77182A21C20A7C00C4F687 /* LUWeakReference.m */; };
 		EF77182C21C20A7C00C4F687 /* LUWeakReference.m in Sources */ = {isa = PBXBuildFile; fileRef = EF77182A21C20A7C00C4F687 /* LUWeakReference.m */; };
 		EF77183321C2269500C4F687 /* LUWeakReferenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF77183221C2269500C4F687 /* LUWeakReferenceTest.m */; };
+		EF77183621C22E3D00C4F687 /* LUObservable.m in Sources */ = {isa = PBXBuildFile; fileRef = EF77183521C22E3D00C4F687 /* LUObservable.m */; };
+		EF77183721C22E3D00C4F687 /* LUObservable.m in Sources */ = {isa = PBXBuildFile; fileRef = EF77183521C22E3D00C4F687 /* LUObservable.m */; };
+		EF77183921C22EA600C4F687 /* LUObservableTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF77183821C22EA600C4F687 /* LUObservableTest.m */; };
+		EF77183B21C22F9B00C4F687 /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF77183A21C22F9B00C4F687 /* TestCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -402,6 +406,10 @@
 		EF77182921C20A7C00C4F687 /* LUWeakReference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LUWeakReference.h; sourceTree = "<group>"; };
 		EF77182A21C20A7C00C4F687 /* LUWeakReference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUWeakReference.m; sourceTree = "<group>"; };
 		EF77183221C2269500C4F687 /* LUWeakReferenceTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUWeakReferenceTest.m; sourceTree = "<group>"; };
+		EF77183421C22E3D00C4F687 /* LUObservable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUObservable.h; sourceTree = "<group>"; };
+		EF77183521C22E3D00C4F687 /* LUObservable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUObservable.m; sourceTree = "<group>"; };
+		EF77183821C22EA600C4F687 /* LUObservableTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUObservableTest.m; sourceTree = "<group>"; };
+		EF77183A21C22F9B00C4F687 /* TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
 		EFCAF0A521B6304000BAC939 /* LUCVarEnumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LUCVarEnumTableViewCell.xib; sourceTree = "<group>"; };
 		EFCAF0A621B630E500BAC939 /* LUCVarBooleanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LUCVarBooleanTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -864,6 +872,8 @@
 				4DE389E91DFCAC0E003A2B6B /* LUNotificationCenter.m */,
 				4DD4FBBE1DFB932B00032A29 /* LUObject.h */,
 				4DD4FBBF1DFB932B00032A29 /* LUObject.m */,
+				EF77183421C22E3D00C4F687 /* LUObservable.h */,
+				EF77183521C22E3D00C4F687 /* LUObservable.m */,
 				4DD4FBC01DFB932B00032A29 /* LUSerializableObject.h */,
 				4DD4FBC11DFB932B00032A29 /* LUSerializableObject.m */,
 				4DD4FBC21DFB932B00032A29 /* LUSerializationUtils.h */,
@@ -886,6 +896,7 @@
 		840F08731DEA6B7400E9F13D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EF77183A21C22F9B00C4F687 /* TestCase.swift */,
 				840F08741DEA6B7400E9F13D /* TestCase.h */,
 				840F08751DEA6B7400E9F13D /* TestCase.m */,
 			);
@@ -924,6 +935,7 @@
 				840F087A1DEA6B7400E9F13D /* LUConsoleTest.m */,
 				840F087B1DEA6B7400E9F13D /* LUMutableArrayTest.m */,
 				EF1D47A61E04A60A005BEC07 /* LunarConsoleTests-Bridging-Header.h */,
+				EF77183821C22EA600C4F687 /* LUObservableTest.m */,
 				840F087C1DEA6B7400E9F13D /* LUSortedListTest.m */,
 				840F087D1DEA6B7400E9F13D /* LUStacktraceTest.m */,
 				840F087E1DEA6B7400E9F13D /* LUStringUtilsTest.m */,
@@ -1049,6 +1061,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DD4FC021DFB932C00032A29 /* LUTheme.m in Sources */,
+				EF77183721C22E3D00C4F687 /* LUObservable.m in Sources */,
 				4DD4FC0A1DFB932C00032A29 /* LUAssert.m in Sources */,
 				4DD4FBE81DFB932C00032A29 /* LUConsolePluginSettings.m in Sources */,
 				4DD4FBCE1DFB932B00032A29 /* LUEntry.m in Sources */,
@@ -1123,6 +1136,7 @@
 				4DD4FC171DFB932C00032A29 /* LUSerializableObject.m in Sources */,
 				EF77182B21C20A7C00C4F687 /* LUWeakReference.m in Sources */,
 				4D02A7B91E496C93009F4998 /* LUCVarFactory.m in Sources */,
+				EF77183621C22E3D00C4F687 /* LUObservable.m in Sources */,
 				4DD4FBFB1DFB932C00032A29 /* LUPassTouchView.m in Sources */,
 				4DD4FBE91DFB932C00032A29 /* lunar_unity_native_interface.m in Sources */,
 				4DD4FC1B1DFB932C00032A29 /* LUSortedList.m in Sources */,
@@ -1180,6 +1194,7 @@
 			files = (
 				840F08841DEA6B7400E9F13D /* LUConsoleTest.m in Sources */,
 				840F08871DEA6B7400E9F13D /* LUStacktraceTest.m in Sources */,
+				EF77183B21C22F9B00C4F687 /* TestCase.swift in Sources */,
 				EF1D47A81E04A60B005BEC07 /* LUActionRegistryFilterTest.swift in Sources */,
 				840F08811DEA6B7400E9F13D /* LUActionRegistryTest.m in Sources */,
 				EF77183321C2269500C4F687 /* LUWeakReferenceTest.m in Sources */,
@@ -1189,6 +1204,7 @@
 				840F087F1DEA6B7400E9F13D /* TestCase.m in Sources */,
 				840F08881DEA6B7400E9F13D /* LUStringUtilsTest.m in Sources */,
 				840F08831DEA6B7400E9F13D /* LUConsoleEntryLookupTableTest.m in Sources */,
+				EF77183921C22EA600C4F687 /* LUObservableTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

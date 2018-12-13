@@ -33,7 +33,6 @@ void UnitySendMessage(const char *objectName, const char *methodName, const char
 {
     [super setUp];
     
-    [_result release];
     _result = [NSMutableArray new];
     
     LUAssertSetHandler(^(NSString *message) {
@@ -66,15 +65,19 @@ void UnitySendMessage(const char *objectName, const char *methodName, const char
     }
     va_end(ap);
     
-    NSString *message = [NSString stringWithFormat:@"Expected: '%@' but was '%@'", [expected componentsJoinedByString:@","], [_result componentsJoinedByString:@","]];
-    
-    XCTAssertEqual(expected.count, _result.count, @"%@", message);
-    for (int i = 0; i < expected.count; ++i)
-    {
-        XCTAssertEqualObjects([expected objectAtIndex:i], [_result objectAtIndex:i], @"%@", message);
-    }
-    
-    [_result removeAllObjects];
+	[self assertResultArray:expected];
+}
+
+- (void)assertResultArray:(NSArray *)expected {
+	NSString *message = [NSString stringWithFormat:@"Expected: '%@' but was '%@'", [expected componentsJoinedByString:@","], [_result componentsJoinedByString:@","]];
+	
+	XCTAssertEqual(expected.count, _result.count, @"%@", message);
+	for (int i = 0; i < expected.count; ++i)
+	{
+		XCTAssertEqualObjects([expected objectAtIndex:i], [_result objectAtIndex:i], @"%@", message);
+	}
+	
+	[_result removeAllObjects];
 }
 
 @end
