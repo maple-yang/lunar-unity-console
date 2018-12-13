@@ -23,6 +23,7 @@
 
 // UI-related functions
 void   LUDisplayAlertView(NSString *title, NSString *message);
+CGRect LUGetContentSafeRect(void);
 CGRect LUGetScreenBounds(void);
 
 UIInterfaceOrientation LUGetInterfaceOrientation(void);

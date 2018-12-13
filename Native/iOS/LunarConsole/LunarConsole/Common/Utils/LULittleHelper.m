@@ -36,6 +36,19 @@ void LUDisplayAlertView(NSString *title, NSString *message)
 #pragma clang diagnostic pop
 }
 
+CGRect LUGetContentSafeRect()
+{
+	CGRect rect = [UIScreen mainScreen].bounds;
+	if (@available(iOS 11.0, *)) {
+		UIEdgeInsets safeAreaInsets = UIApplication.sharedApplication.keyWindow.safeAreaInsets;
+		rect.origin.y += safeAreaInsets.top;
+		rect.origin.x += safeAreaInsets.left;
+		rect.size.width -= safeAreaInsets.left + safeAreaInsets.right;
+		rect.size.height -= safeAreaInsets.top + safeAreaInsets.bottom;
+	}
+	return rect;
+}
+
 CGRect LUGetScreenBounds()
 {
     if (LU_IOS_VERSION_AVAILABLE(__IPHONE_8_0))
