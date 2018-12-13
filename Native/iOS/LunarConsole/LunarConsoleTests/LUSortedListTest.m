@@ -41,12 +41,6 @@
     _list = [LUSortedList new];
 }
 
-- (void)tearDown
-{
-    [_list release];
-    [super tearDown];
-}
-
 #pragma mark -
 #pragma mark Testing
 

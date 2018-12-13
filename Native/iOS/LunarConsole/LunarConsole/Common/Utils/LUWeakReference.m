@@ -22,7 +22,7 @@
 	{
 		_target = target;
 	}
-	return target;
+	return self;
 }
 
 - (BOOL)isLost

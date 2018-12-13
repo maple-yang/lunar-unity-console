@@ -134,6 +134,7 @@
 		EF2E66B321B1C79500EE14CD /* LUCVarEnumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF2E66B221B1C79500EE14CD /* LUCVarEnumTableViewCell.m */; };
 		EF77182B21C20A7C00C4F687 /* LUWeakReference.m in Sources */ = {isa = PBXBuildFile; fileRef = EF77182A21C20A7C00C4F687 /* LUWeakReference.m */; };
 		EF77182C21C20A7C00C4F687 /* LUWeakReference.m in Sources */ = {isa = PBXBuildFile; fileRef = EF77182A21C20A7C00C4F687 /* LUWeakReference.m */; };
+		EF77183321C2269500C4F687 /* LUWeakReferenceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF77183221C2269500C4F687 /* LUWeakReferenceTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -400,6 +401,7 @@
 		EF54AC4F21B7638300514680 /* LUCVarTableViewCell+Inheritance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LUCVarTableViewCell+Inheritance.h"; sourceTree = "<group>"; };
 		EF77182921C20A7C00C4F687 /* LUWeakReference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LUWeakReference.h; sourceTree = "<group>"; };
 		EF77182A21C20A7C00C4F687 /* LUWeakReference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUWeakReference.m; sourceTree = "<group>"; };
+		EF77183221C2269500C4F687 /* LUWeakReferenceTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUWeakReferenceTest.m; sourceTree = "<group>"; };
 		EFCAF0A521B6304000BAC939 /* LUCVarEnumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LUCVarEnumTableViewCell.xib; sourceTree = "<group>"; };
 		EFCAF0A621B630E500BAC939 /* LUCVarBooleanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LUCVarBooleanTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -925,6 +927,7 @@
 				840F087C1DEA6B7400E9F13D /* LUSortedListTest.m */,
 				840F087D1DEA6B7400E9F13D /* LUStacktraceTest.m */,
 				840F087E1DEA6B7400E9F13D /* LUStringUtilsTest.m */,
+				EF77183221C2269500C4F687 /* LUWeakReferenceTest.m */,
 				844741B91B719C3100F5ABD3 /* Supporting Files */,
 			);
 			path = LunarConsoleTests;
@@ -1179,6 +1182,7 @@
 				840F08871DEA6B7400E9F13D /* LUStacktraceTest.m in Sources */,
 				EF1D47A81E04A60B005BEC07 /* LUActionRegistryFilterTest.swift in Sources */,
 				840F08811DEA6B7400E9F13D /* LUActionRegistryTest.m in Sources */,
+				EF77183321C2269500C4F687 /* LUWeakReferenceTest.m in Sources */,
 				840F08821DEA6B7400E9F13D /* LUConsoleEntryListTest.m in Sources */,
 				840F08861DEA6B7400E9F13D /* LUSortedListTest.m in Sources */,
 				840F08851DEA6B7400E9F13D /* LUMutableArrayTest.m in Sources */,
@@ -1202,7 +1206,6 @@
 		4DD4F54F1DFB7F4B00032A29 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1212,7 +1215,6 @@
 		4DD4F5501DFB7F4B00032A29 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1226,7 +1228,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -1273,7 +1275,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -1309,7 +1311,6 @@
 		844741BE1B719C3100F5ABD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1319,7 +1320,6 @@
 		844741BF1B719C3100F5ABD3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_ARC = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

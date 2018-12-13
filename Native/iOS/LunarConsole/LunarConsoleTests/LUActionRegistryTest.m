@@ -44,12 +44,6 @@
     _nextActionId = 0;
 }
 
-- (void)tearDown
-{
-    [super tearDown];
-    [_actionRegistry release];
-}
-
 #pragma mark -
 #pragma mark Register
 

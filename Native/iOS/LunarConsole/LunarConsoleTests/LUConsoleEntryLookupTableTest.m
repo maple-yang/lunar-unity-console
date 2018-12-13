@@ -38,12 +38,6 @@
     _table = [LUConsoleLogEntryLookupTable new];
 }
 
-- (void)tearDown
-{
-    [_table release];
-    [super tearDown];
-}
-
 - (void)testAddEntry
 {
     LUConsoleCollapsedLogEntry *entry = [self addEntryMessage:@"message1"];

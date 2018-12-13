@@ -37,8 +37,6 @@
     [console logMessage:@"3" stackTrace:@"s3" type:LUConsoleLogTypeLog];
     
     [self assertResult:@"1", @"2", @"3", nil];
-    
-    [console release];
 }
 
 - (void)testTrim
@@ -55,8 +53,6 @@
     [console logMessage:@"7" stackTrace:@"s7" type:LUConsoleLogTypeLog];
     
     [self assertResult:@"4", @"5", @"6", @"7", nil];
-    
-    [console release];
 }
 
 - (void)testClear
@@ -73,8 +69,6 @@
     [console clear];
     
     [self assertResult:nil];
-    
-    [console release];
 }
 
 #pragma mark -
