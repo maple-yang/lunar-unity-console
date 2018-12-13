@@ -33,7 +33,7 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
 @interface LUCVar ()
 {
     Class _cellClass;
-	NSMutableArray * _observers;
+	NSMutableArray<LUWeakReference *> * _observers;
 }
 
 @end
@@ -149,24 +149,24 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
 
 - (void)registerObserver:(id<LUCVarObserver>)observer
 {
-	for (NSValue *reference in _observers)
+	for (LUWeakReference *reference in _observers)
 	{
-		id<LUCVarObserver> existingObserver = reference.nonretainedObjectValue;
+		id<LUCVarObserver> existingObserver = reference.target;
 		if (observer == existingObserver)
 		{
 			return;
 		}
 	}
 	
-	[_observers addObject:[NSValue valueWithNonretainedObject:observer]]; // keep weak references
+	[_observers addObject:[LUWeakReference referenceWithTarget:observer]];
 	[observer cvarValueDidChange:self];
 }
 
 - (void)unregisterObserver:(id<LUCVarObserver>)observer
 {
-	for (NSValue *reference in _observers)
+	for (LUWeakReference *reference in _observers)
 	{
-		id<LUCVarObserver> existingObserver = reference.nonretainedObjectValue;
+		id<LUCVarObserver> existingObserver = reference.target;
 		if (observer == existingObserver)
 		{
 			[_observers removeObject:reference];
@@ -178,9 +178,9 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
 - (void)notifyObservers
 {
 	NSUInteger lostReferenceCount = 0;
-	for (NSValue *reference in _observers)
+	for (LUWeakReference *reference in _observers)
 	{
-		id<LUCVarObserver> observer = [reference nonretainedObjectValue];
+		id<LUCVarObserver> observer = reference.target;
 		if (observer == nil)
 		{
 			lostReferenceCount++;
@@ -192,7 +192,7 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
 	
 	for (NSUInteger i = _observers.count; i >= 0 && lostReferenceCount > 0; --i)
 	{
-		if ([_observers[i] nonretainedObjectValue] == nil)
+		if (_observers[i].isLost)
 		{
 			[_observers removeObjectAtIndex:i];
 			lostReferenceCount--;

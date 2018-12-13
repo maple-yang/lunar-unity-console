@@ -132,6 +132,8 @@
 		844741B51B719C3100F5ABD3 /* libLunarConsoleFull.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 844741A91B719C3100F5ABD3 /* libLunarConsoleFull.a */; };
 		EF1D47A81E04A60B005BEC07 /* LUActionRegistryFilterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D47A71E04A60B005BEC07 /* LUActionRegistryFilterTest.swift */; };
 		EF2E66B321B1C79500EE14CD /* LUCVarEnumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF2E66B221B1C79500EE14CD /* LUCVarEnumTableViewCell.m */; };
+		EF77182B21C20A7C00C4F687 /* LUWeakReference.m in Sources */ = {isa = PBXBuildFile; fileRef = EF77182A21C20A7C00C4F687 /* LUWeakReference.m */; };
+		EF77182C21C20A7C00C4F687 /* LUWeakReference.m in Sources */ = {isa = PBXBuildFile; fileRef = EF77182A21C20A7C00C4F687 /* LUWeakReference.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -396,6 +398,8 @@
 		EF2E66B121B1C79500EE14CD /* LUCVarEnumTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LUCVarEnumTableViewCell.h; sourceTree = "<group>"; };
 		EF2E66B221B1C79500EE14CD /* LUCVarEnumTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUCVarEnumTableViewCell.m; sourceTree = "<group>"; };
 		EF54AC4F21B7638300514680 /* LUCVarTableViewCell+Inheritance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LUCVarTableViewCell+Inheritance.h"; sourceTree = "<group>"; };
+		EF77182921C20A7C00C4F687 /* LUWeakReference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LUWeakReference.h; sourceTree = "<group>"; };
+		EF77182A21C20A7C00C4F687 /* LUWeakReference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUWeakReference.m; sourceTree = "<group>"; };
 		EFCAF0A521B6304000BAC939 /* LUCVarEnumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LUCVarEnumTableViewCell.xib; sourceTree = "<group>"; };
 		EFCAF0A621B630E500BAC939 /* LUCVarBooleanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LUCVarBooleanTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -535,8 +539,8 @@
 				4D02A79D1E496C93009F4998 /* LUCVarInputTableViewCell.m */,
 				4D02A79E1E496C93009F4998 /* LUCVarInputTableViewCell.xib */,
 				4D02A7A31E496C93009F4998 /* LUCVarTableViewCell.h */,
-				EF54AC4F21B7638300514680 /* LUCVarTableViewCell+Inheritance.h */,
 				4D02A7A41E496C93009F4998 /* LUCVarTableViewCell.m */,
+				EF54AC4F21B7638300514680 /* LUCVarTableViewCell+Inheritance.h */,
 				4D02A7A51E496C93009F4998 /* LUVariables.h */,
 			);
 			path = Variables;
@@ -871,6 +875,8 @@
 				4DD4FBCA1DFB932B00032A29 /* LUThreading.h */,
 				4DD4FBCB1DFB932B00032A29 /* LUThreading.m */,
 				4DD4FBCC1DFB932B00032A29 /* LUUtils.h */,
+				EF77182921C20A7C00C4F687 /* LUWeakReference.h */,
+				EF77182A21C20A7C00C4F687 /* LUWeakReference.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1075,6 +1081,7 @@
 				4DD4FBDC1DFB932B00032A29 /* LUConsoleLogEntryTableViewCell.m in Sources */,
 				4DD4FBEC1DFB932C00032A29 /* LUUnityScriptMessenger.m in Sources */,
 				4DD4FC1E1DFB932C00032A29 /* LUStacktrace.m in Sources */,
+				EF77182C21C20A7C00C4F687 /* LUWeakReference.m in Sources */,
 				4DD4FC121DFB932C00032A29 /* LULittleHelper.m in Sources */,
 				4D02A8311E5940D2009F4998 /* LUSlider.m in Sources */,
 				4DD4FBFE1DFB932C00032A29 /* LUSwitch.m in Sources */,
@@ -1111,6 +1118,7 @@
 				4DD4FBCD1DFB932B00032A29 /* LUEntry.m in Sources */,
 				4DE389EA1DFCAC0E003A2B6B /* LUNotificationCenter.m in Sources */,
 				4DD4FC171DFB932C00032A29 /* LUSerializableObject.m in Sources */,
+				EF77182B21C20A7C00C4F687 /* LUWeakReference.m in Sources */,
 				4D02A7B91E496C93009F4998 /* LUCVarFactory.m in Sources */,
 				4DD4FBFB1DFB932C00032A29 /* LUPassTouchView.m in Sources */,
 				4DD4FBE91DFB932C00032A29 /* lunar_unity_native_interface.m in Sources */,

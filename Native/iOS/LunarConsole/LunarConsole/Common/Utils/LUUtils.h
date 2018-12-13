@@ -34,6 +34,7 @@
 #import "LUStacktrace.h"
 #import "LUStringUtils.h"
 #import "LUThreading.h"
+#import "LUWeakReference.h"
 
 LU_INLINE BOOL
 LUFloatApprox(float a, float b)
