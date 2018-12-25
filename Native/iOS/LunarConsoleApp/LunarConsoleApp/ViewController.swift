@@ -65,7 +65,6 @@ class ViewController: LUViewController {
         
         commandLookup = createCommandLookup()
 
-        /*
         plugin.registerAction(withId: 1, name: "Action 1")
         plugin.registerAction(withId: 2, name: "Action 2")
         plugin.registerAction(withId: 3, name: "Action 3")
@@ -80,7 +79,6 @@ class ViewController: LUViewController {
         rangeVariable?.range = LUMakeCVarRange(1.0, 5.0)
         let volatileVariable = plugin.registerVariable(withId: 9, name: "volatile", type: LUCVarTypeNameInteger, value: "25")
         volatileVariable?.flags = LUCVarFlagsNoArchive
-        */
         
         netPeer = NetPeer()
         netPeer.delegate = self

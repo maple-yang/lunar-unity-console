@@ -24,17 +24,17 @@
 
 #import "Lunar-Full.h"
 
-inline static float clampf(float value, float min, float max)
-{
-	if (value < min) return min;
-	if (value > max) return max;
-	return value;
-}
+//inline static float clampf(float value, float min, float max)
+//{
+//	if (value < min) return min;
+//	if (value > max) return max;
+//	return value;
+//}
 
 @interface LUCVarInputTableViewCell ()
 
 @property (nonatomic, weak) IBOutlet UITextField * inputField;
-@property (nonatomic, weak) IBOutlet LUSlider    * rangeSlider;
+@property (nonatomic, strong) LUSlider * rangeSlider;
 
 @end
 
@@ -47,12 +47,8 @@ inline static float clampf(float value, float min, float max)
 {
     [super setupVariable:variable atIndexPath:indexPath];
 	
-	self.rangeSlider.hidden = YES;
-	if ([variable hasRange])
-	{
-		self.rangeSlider.minimumValue = variable.range.min;
-		self.rangeSlider.maximumValue = variable.range.max;
-	}
+	self.inputField.inputAccessoryView = [self createVariableInputAccessoryView:variable];
+	[self.inputField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 	
     LU_SET_ACCESSIBILITY_IDENTIFIER(_inputField, @"Variable Input Field");
 }
@@ -64,7 +60,7 @@ inline static float clampf(float value, float min, float max)
 	_inputField.text = self.variable.value;
 	if ([self.variable hasRange])
 	{
-		self.rangeSlider.value = clampf(self.variable.floatValue, self.variable.range.min, self.variable.range.max);
+		// self.rangeSlider.value = clampf(self.variable.floatValue, self.variable.range.min, self.variable.range.max);
 	}
 }
 
@@ -81,7 +77,6 @@ inline static float clampf(float value, float min, float max)
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-	[self setRangeSliderVisible:YES];
 	[self notifyWillStartEditing];
     return YES;
 }
@@ -92,7 +87,6 @@ inline static float clampf(float value, float min, float max)
 	BOOL valid = [self.variable isValidValue:text];
 	if (valid)
 	{
-		[self setRangeSliderVisible:NO];
 		[self notifyDidStopEditing];
 		self.variable.value = textField.text;
 	}
@@ -105,16 +99,62 @@ inline static float clampf(float value, float min, float max)
 	return NO;
 }
 
-#pragma mark -
-#pragma mark Helpers
-
-- (void)setRangeSliderVisible:(BOOL)visible
+- (void)textFieldDidChange:(UITextField *)textField
 {
-	if ([self.variable hasRange])
+	float value;
+	if (LUStringTryParseFloat(textField.text, &value))
 	{
-		self.rangeSlider.hidden = !visible;
-		self.titleLabel.hidden = visible;
+		_rangeSlider.value = value;
 	}
+}
+
+#pragma mark -
+#pragma mark Accessory View
+
+- (nullable UIView *)createVariableInputAccessoryView:(LUCVar *)variable {
+	if ([variable hasRange])
+	{
+		UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
+		contentView.backgroundColor = [LUTheme mainTheme].backgroundColorDark;
+		contentView.translatesAutoresizingMaskIntoConstraints = NO;
+		
+		_rangeSlider = [[LUSlider alloc] init];
+		_rangeSlider.value = variable.floatValue;
+		_rangeSlider.minimumValue = variable.range.min;
+		_rangeSlider.maximumValue = variable.range.max;
+		_rangeSlider.translatesAutoresizingMaskIntoConstraints = NO;
+		
+		[contentView addSubview:_rangeSlider];
+		
+		NSArray *constraints = @[
+			 [NSLayoutConstraint constraintWithItem:_rangeSlider
+										  attribute:NSLayoutAttributeCenterX
+										  relatedBy:NSLayoutRelationEqual
+											 toItem:contentView
+										  attribute:NSLayoutAttributeCenterX
+										 multiplier:1.0
+										   constant:0.0],
+			 [NSLayoutConstraint constraintWithItem:_rangeSlider
+										  attribute:NSLayoutAttributeCenterY
+										  relatedBy:NSLayoutRelationEqual
+											 toItem:contentView
+										  attribute:NSLayoutAttributeCenterY
+										 multiplier:1.0
+										   constant:0.0],
+			 [NSLayoutConstraint constraintWithItem:_rangeSlider
+										  attribute:NSLayoutAttributeWidth
+										  relatedBy:NSLayoutRelationEqual
+											 toItem:nil
+										  attribute:NSLayoutAttributeNotAnAttribute
+										 multiplier:1.0
+										   constant:300],
+		];
+		[NSLayoutConstraint activateConstraints:constraints];
+		
+		return contentView;
+	}
+	
+	return nil;
 }
 
 @end

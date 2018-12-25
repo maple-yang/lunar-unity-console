@@ -12,7 +12,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LUCVarInputTableViewCell">
             <connections>
                 <outlet property="inputField" destination="199-bK-QjZ" id="WAt-wB-5jS"/>
-                <outlet property="rangeSlider" destination="RW3-Sc-cTO" id="PlT-Wh-TQl"/>
                 <outlet property="resetButton" destination="rKa-Bk-Nep" id="j1s-d1-1TT"/>
                 <outlet property="titleLabel" destination="t44-Et-iu9" id="lyT-o5-anA"/>
             </connections>
@@ -29,14 +28,11 @@
                         <rect key="frame" x="12" y="7" width="300" height="30"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t44-Et-iu9">
-                                <rect key="frame" x="0.0" y="0.0" width="33.5" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RW3-Sc-cTO" customClass="LUSlider">
-                                <rect key="frame" x="39.5" y="0.0" width="82.5" height="31"/>
-                            </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKa-Bk-Nep" userLabel="Button Reset">
                                 <rect key="frame" x="128" y="0.0" width="44" height="30"/>
                                 <constraints>
