@@ -61,10 +61,16 @@ public class PluginSettings
     };
 
     @PluginSettingsEntry
-    private boolean enableExceptionWarning;
+    public boolean enableExceptionWarning;
 
     @PluginSettingsEntry(proOnly = true)
-    private boolean enableTransparentLogOverlay;
+    public boolean enableTransparentLogOverlay;
+
+    @PluginSettingsEntry(proOnly = true)
+    public long overlayHideDelayMillis = 1000;
+
+    @PluginSettingsEntry(proOnly = true)
+    public int overlayVisibleLinesCount = 3;
 
     public PluginSettings(Context context)
     {
@@ -199,26 +205,6 @@ public class PluginSettings
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     // Getters/Setters
-
-    public boolean isEnableExceptionWarning()
-    {
-        return enableExceptionWarning;
-    }
-
-    public void setEnableExceptionWarning(boolean enableExceptionWarning)
-    {
-        this.enableExceptionWarning = enableExceptionWarning;
-    }
-
-    public boolean isEnableTransparentLogOverlay()
-    {
-        return enableTransparentLogOverlay;
-    }
-
-    public void setEnableTransparentLogOverlay(boolean enableTransparentLogOverlay)
-    {
-        this.enableTransparentLogOverlay = enableTransparentLogOverlay;
-    }
 
     private Context getContext()
     {

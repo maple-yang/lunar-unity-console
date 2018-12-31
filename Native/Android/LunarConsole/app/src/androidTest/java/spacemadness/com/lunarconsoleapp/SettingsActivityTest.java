@@ -39,34 +39,34 @@ public class SettingsActivityTest extends ApplicationBaseUITest
     public void testSettings()
     {
         PluginSettings settings = ConsolePlugin.pluginSettings();
-        settings.setEnableExceptionWarning(true);
-        settings.setEnableTransparentLogOverlay(false);
+        settings.enableExceptionWarning = true;
+        settings.enableTransparentLogOverlay = false;
         settings.save();
 
         openSettings();
-        assertPreferenceChecked("Enable Exception Warning", settings.isEnableExceptionWarning());
-        assertPreferenceChecked("Enable Transparent Log Overlay", settings.isEnableTransparentLogOverlay());
+	    assertPreferenceChecked("Enable Exception Warning", settings.enableExceptionWarning);
+        assertPreferenceChecked("Enable Transparent Log Overlay", settings.enableTransparentLogOverlay);
         pressBackButton();
 
-        settings.setEnableExceptionWarning(false);
-        settings.setEnableTransparentLogOverlay(true);
+        settings.enableExceptionWarning = false;
+        settings.enableTransparentLogOverlay = true;
         settings.save();
 
         openSettings();
-        assertPreferenceChecked("Enable Exception Warning", settings.isEnableExceptionWarning());
-        assertPreferenceChecked("Enable Transparent Log Overlay", settings.isEnableTransparentLogOverlay());
+	    assertPreferenceChecked("Enable Exception Warning", settings.enableExceptionWarning);
+        assertPreferenceChecked("Enable Transparent Log Overlay", settings.enableTransparentLogOverlay);
 
-        boolean expectedEnableExceptionWarning = !settings.isEnableExceptionWarning();
-        boolean expectedEnableTransparentLogOverlay = !settings.isEnableTransparentLogOverlay();
+	    boolean expectedEnableExceptionWarning = !settings.enableExceptionWarning;
+        boolean expectedEnableTransparentLogOverlay = !settings.enableTransparentLogOverlay;
 
         pressButton("Enable Exception Warning");
         pressButton("Enable Transparent Log Overlay");
 
-        Assert.assertEquals(expectedEnableExceptionWarning, settings.isEnableExceptionWarning());
-        Assert.assertEquals(expectedEnableTransparentLogOverlay, settings.isEnableTransparentLogOverlay());
+	    Assert.assertEquals(expectedEnableExceptionWarning, settings.enableExceptionWarning);
+        Assert.assertEquals(expectedEnableTransparentLogOverlay, settings.enableTransparentLogOverlay);
 
         settings = ConsolePlugin.pluginSettings();
-        Assert.assertEquals(expectedEnableExceptionWarning, settings.isEnableExceptionWarning());
-        Assert.assertEquals(expectedEnableTransparentLogOverlay, settings.isEnableTransparentLogOverlay());
+	    Assert.assertEquals(expectedEnableExceptionWarning, settings.enableExceptionWarning);
+        Assert.assertEquals(expectedEnableTransparentLogOverlay, settings.enableTransparentLogOverlay);
     }
 }
