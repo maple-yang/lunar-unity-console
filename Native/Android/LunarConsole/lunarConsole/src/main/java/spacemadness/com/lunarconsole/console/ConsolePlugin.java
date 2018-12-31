@@ -266,7 +266,7 @@ public class ConsolePlugin implements NotificationCenter.OnNotificationListener,
     {
         enableGestureRecognition();
 
-        if (settings.isEnableTransparentLogOverlay())
+        if (settings.enableTransparentLogOverlay)
         {
             runOnUIThread(new Runnable()
             {
@@ -640,8 +640,8 @@ public class ConsolePlugin implements NotificationCenter.OnNotificationListener,
         }
 
         settings = new PluginSettings(activity.getApplicationContext());
-        settings.setEnableExceptionWarning(unitySettings.editorSettings.enableExceptionWarning);
-        settings.setEnableTransparentLogOverlay(unitySettings.editorSettings.enableTransparentLogOverlay);
+        settings.enableExceptionWarning = unitySettings.editorSettings.enableExceptionWarning;
+        settings.enableTransparentLogOverlay = unitySettings.editorSettings.enableTransparentLogOverlay;
         settings.load();
 
         this.version = unitySettings.version;
@@ -862,7 +862,7 @@ public class ConsolePlugin implements NotificationCenter.OnNotificationListener,
                         {
                             removeConsoleView();
 
-                            if (settings.isEnableTransparentLogOverlay())
+                            if (settings.enableTransparentLogOverlay)
                             {
                                 showLogOverlayView();
                             }
@@ -932,7 +932,7 @@ public class ConsolePlugin implements NotificationCenter.OnNotificationListener,
     {
         try
         {
-            if (!settings.isEnableExceptionWarning())
+            if (!settings.enableExceptionWarning)
             {
                 return;
             }
@@ -1018,6 +1018,9 @@ public class ConsolePlugin implements NotificationCenter.OnNotificationListener,
                 }
 
                 ConsoleOverlayLogView.Settings overlaySettings = new ConsoleOverlayLogView.Settings();
+                overlaySettings.maxVisibleEntries = pluginSettings().overlayVisibleLinesCount;
+                overlaySettings.entryDisplayTimeMillis = pluginSettings().overlayHideDelayMillis;
+
                 consoleOverlayLogView = new ConsoleOverlayLogView(activity, console, overlaySettings);
 
                 LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);

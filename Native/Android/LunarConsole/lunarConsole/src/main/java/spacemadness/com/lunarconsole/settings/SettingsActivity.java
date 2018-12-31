@@ -23,6 +23,7 @@ package spacemadness.com.lunarconsole.settings;
 
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
@@ -121,9 +122,17 @@ public class SettingsActivity extends PreferenceActivity
     {
         if (type == boolean.class)
         {
-            CheckBoxPreference checkBoxPreference = new CheckBoxPreference(this);
-            checkBoxPreference.setChecked((boolean) value);
-            return checkBoxPreference;
+            CheckBoxPreference preference = new CheckBoxPreference(this);
+            preference.setChecked((boolean) value);
+            return preference;
+        }
+
+        if (type == int.class || type == long.class)
+        {
+            EditTextPreference preference = new EditTextPreference(this);
+            preference.setText(StringUtils.toString(value));
+            preference.setDefaultValue(StringUtils.toString(value));
+            return preference;
         }
 
         return null;

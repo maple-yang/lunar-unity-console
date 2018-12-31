@@ -32,9 +32,11 @@ public class EditorSettings
     public boolean sortActions = true;
     public boolean sortVariables = true;
     public String[] emails;
+    public ConsoleLogOverlaySettings logOverlaySettings;
 
     public EditorSettings()
     {
+        logOverlaySettings = new ConsoleLogOverlaySettings();
     }
 
     public static EditorSettings fromJson(String jsonString) throws EditorSettingsException
@@ -48,6 +50,8 @@ public class EditorSettings
             settings.enableTransparentLogOverlay = json.getBoolean("transparentLogOverlay");
             settings.sortActions = json.getBoolean("sortActions");
             settings.sortVariables = json.getBoolean("sortVariables");
+            JSONObject overlayJson = json.optJSONObject("transparentLogOverlaySettings");
+            settings.logOverlaySettings = overlayJson != null ? ConsoleLogOverlaySettings.fromJson(overlayJson) : new ConsoleLogOverlaySettings();
             JSONArray emails = json.optJSONArray("emails");
             if (emails != null && emails.length() > 0)
             {

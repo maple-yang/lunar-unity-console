@@ -45,18 +45,18 @@ public class PluginSettingsTest extends InstrumentationTestCase
 
     public void testSaveLoad()
     {
-        assertEquals(true, settings.isEnableExceptionWarning());
-        assertEquals(false, settings.isEnableTransparentLogOverlay());
+	    assertEquals(true, settings.enableExceptionWarning);
+        assertEquals(false, settings.enableTransparentLogOverlay);
 
-        settings.setEnableExceptionWarning(false);
-        settings.setEnableTransparentLogOverlay(true);
+        settings.enableExceptionWarning = false;
+        settings.enableTransparentLogOverlay = true;
 
         boolean saved = settings.save();
         assertTrue(saved);
 
         settings = new PluginSettings(getContext());
-        assertEquals(false, settings.isEnableExceptionWarning());
-        assertEquals(true, settings.isEnableTransparentLogOverlay());
+	    assertEquals(false, settings.enableExceptionWarning);
+        assertEquals(true, settings.enableTransparentLogOverlay);
     }
 
     private Context getContext()
