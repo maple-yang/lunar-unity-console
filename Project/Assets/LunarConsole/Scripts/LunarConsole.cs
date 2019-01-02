@@ -65,6 +65,16 @@ namespace LunarConsolePlugin
     delegate void LunarConsoleNativeMessageHandler(IDictionary<string, string> data);
 
     [Serializable]
+    public class TransparentLogOverlaySettings
+    {
+        [SerializeField]
+        public int maxVisibleLines = 3;
+
+        [SerializeField]
+        public float hideDelay = 1.0f;
+    }
+
+    [Serializable]
     public class LunarConsoleSettings
     {
         public bool exceptionWarning = true;
@@ -73,6 +83,11 @@ namespace LunarConsolePlugin
         [HideInInspector]
         #endif
         public bool transparentLogOverlay = false;
+
+        #if LUNAR_CONSOLE_FREE
+        [HideInInspector]
+        #endif
+        public TransparentLogOverlaySettings transparentLogOverlaySettings = new TransparentLogOverlaySettings();
 
         #if LUNAR_CONSOLE_FREE
         [HideInInspector]
@@ -329,19 +344,31 @@ namespace LunarConsolePlugin
         {
             try
             {
-                foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+                foreach (var assembly in ListAssemblies())
                 {
-                    var containerTypes = ReflectionUtils.FindAttributeTypes<CVarContainerAttribute>(assembly);
-                    foreach (var type in containerTypes)
+                    try
                     {
-                        RegisterVariables(type);
+                        var containerTypes = ReflectionUtils.FindAttributeTypes<CVarContainerAttribute>(assembly);
+                        foreach (var type in containerTypes)
+                        {
+                            RegisterVariables(type);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Log.e(e, "Unable to register variables from assembly: {0}", assembly);
                     }
                 }
             }
             catch (Exception e)
             {
-                Debug.LogError("Unable to resolve variables: " + e.Message);
+                Log.e(e, "Unable to register variables");
             }
+        }
+
+        private static IList<Assembly> ListAssemblies() {
+            // for now only list the current assembly
+            return new Assembly[] { Assembly.GetExecutingAssembly() };
         }
 
         private void RegisterVariables(Type type)
