@@ -113,14 +113,14 @@
 #pragma mark -
 #pragma mark Editing
 
-- (void)notifyWillStartEditing
+- (void)notifyStartEditing
 {
 	if ([_delegate respondsToSelector:@selector(cellWillBeginEditing:)]) {
 		[_delegate cellWillBeginEditing:self];
 	}
 }
 
-- (void)notifyDidStopEditing
+- (void)notifyStopEditing
 {
 	if ([_delegate respondsToSelector:@selector(cellDidEndEditing:)]) {
 		[_delegate cellDidEndEditing:self];

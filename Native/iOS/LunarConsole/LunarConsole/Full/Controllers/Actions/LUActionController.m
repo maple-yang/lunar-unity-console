@@ -348,7 +348,6 @@ static UIViewAnimationOptions UIViewAnimationOptionsFromCurve(UIViewAnimationCur
     LUCVar *cvar = [self variableAtIndex:index];
     LUCVarTableViewCell *cell = (LUCVarTableViewCell *)[cvar tableView:tableView cellAtIndexPath:indexPath];
     cell.contentView.backgroundColor = index % 2 == 0 ? theme.actionsBackgroundColorDark : theme.actionsBackgroundColorLight;
-    cell.presentingController = self;
     return cell;
 }
 

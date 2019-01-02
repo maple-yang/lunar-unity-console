@@ -77,7 +77,7 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-	[self notifyWillStartEditing];
+	[self notifyStartEditing];
     return YES;
 }
 
@@ -87,7 +87,7 @@
 	BOOL valid = [self.variable isValidValue:text];
 	if (valid)
 	{
-		[self notifyDidStopEditing];
+		[self notifyStopEditing];
 		self.variable.value = textField.text;
 	}
 	return valid;

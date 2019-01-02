@@ -38,7 +38,6 @@
 @property (nonatomic, readonly) NSString * cellNibName;
 @property (nonatomic, readonly, weak) LUCVar *variable;
 @property (nonatomic, readonly) int variableId;
-@property (nonatomic, weak) UIViewController * presentingController;
 @property (nonatomic, weak) id<LUCVarTableViewCellDelegate> delegate;
 
 @property (nonatomic, readonly, weak) UILabel  * titleLabel;
