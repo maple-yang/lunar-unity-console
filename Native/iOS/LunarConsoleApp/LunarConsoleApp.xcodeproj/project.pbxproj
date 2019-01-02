@@ -197,6 +197,7 @@
 		EFAE76481D2486D70072CCBF /* LUConsoleLogControllerUITest.m in Sources */ = {isa = PBXBuildFile; fileRef = EFAE76471D2486D70072CCBF /* LUConsoleLogControllerUITest.m */; };
 		EFAE764D1D24878B0072CCBF /* UITestCaseBase.m in Sources */ = {isa = PBXBuildFile; fileRef = EFAE764A1D24878B0072CCBF /* UITestCaseBase.m */; };
 		EFAE764E1D24878B0072CCBF /* XCTestCase+Operations.m in Sources */ = {isa = PBXBuildFile; fileRef = EFAE764C1D24878B0072CCBF /* XCTestCase+Operations.m */; };
+		EFFB414B21DD4C170029215A /* LUCVarEnumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFFB414921DD4C170029215A /* LUCVarEnumTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -389,6 +390,7 @@
 		EFAE764A1D24878B0072CCBF /* UITestCaseBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITestCaseBase.m; sourceTree = "<group>"; };
 		EFAE764B1D24878B0072CCBF /* XCTestCase+Operations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XCTestCase+Operations.h"; sourceTree = "<group>"; };
 		EFAE764C1D24878B0072CCBF /* XCTestCase+Operations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XCTestCase+Operations.m"; sourceTree = "<group>"; };
+		EFFB414921DD4C170029215A /* LUCVarEnumTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LUCVarEnumTableViewCell.xib; path = ../../LunarConsole/LunarConsole/Full/Controllers/Variables/LUCVarEnumTableViewCell.xib; sourceTree = "<group>"; };
 		F617298B700EBF9255923755 /* Pods-LunarConsoleAppFull.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LunarConsoleAppFull.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LunarConsoleAppFull/Pods-LunarConsoleAppFull.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -634,6 +636,7 @@
 				4DD4FCE61DFB93C600032A29 /* LUConsoleSettingsTableCell.xib */,
 				4DD4FCE31DFB93C600032A29 /* LUCVarBooleanTableViewCell.xib */,
 				4D02A84A1E5A9658009F4998 /* LUCVarEditController.xib */,
+				EFFB414921DD4C170029215A /* LUCVarEnumTableViewCell.xib */,
 				4DD4FCE41DFB93C600032A29 /* LUCVarInputTableViewCell.xib */,
 				4DD4FCE51DFB93C600032A29 /* LUExceptionWarningController.xib */,
 			);
@@ -997,6 +1000,7 @@
 				4DD4FCF01DFB93C600032A29 /* LUCVarBooleanTableViewCell.xib in Resources */,
 				4DD4FCF11DFB93C600032A29 /* LUCVarInputTableViewCell.xib in Resources */,
 				4DD4FCF21DFB93C600032A29 /* LUExceptionWarningController.xib in Resources */,
+				EFFB414B21DD4C170029215A /* LUCVarEnumTableViewCell.xib in Resources */,
 				4DD4FCF31DFB93C600032A29 /* LUConsoleSettingsTableCell.xib in Resources */,
 				4DBF2A341E65434A006E2C8A /* lunar_console_action_button_large_normal@2x.png in Resources */,
 				4DBF2A361E65434A006E2C8A /* lunar_console_action_button_large_selected.png in Resources */,
