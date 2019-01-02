@@ -26,8 +26,6 @@
 
 extern NSNotificationName const LUConsolePopupControllerWillAppearNotification;
 extern NSNotificationName const LUConsolePopupControllerWillDisappearNotification;
-extern NSNotificationName const LUConsoleVariableWillBeginEditingNotification;
-extern NSNotificationName const LUConsoleVariableDidEndEditingNotification;
 
 extern NSString * const LUConsoleVariableKeyVariable;
 

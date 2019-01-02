@@ -295,13 +295,11 @@ static UIViewAnimationOptions UIViewAnimationOptionsFromCurve(UIViewAnimationCur
 - (void)cellWillBeginEditing:(LUCVarTableViewCell *)cell
 {
 	_editingCellIndexPath = cell.indexPath;
-	[LUNotificationCenter postNotificationName:LUConsoleVariableWillBeginEditingNotification object:nil userInfo:@{LUConsoleVariableKeyVariable : cell.variable}];
 }
 
 - (void)cellDidEndEditing:(LUCVarTableViewCell *)cell
 {
 	_editingCellIndexPath = nil;
-	[LUNotificationCenter postNotificationName:LUConsoleVariableDidEndEditingNotification object:nil userInfo:@{LUConsoleVariableKeyVariable : cell.variable}];
 }
 
 #pragma mark -

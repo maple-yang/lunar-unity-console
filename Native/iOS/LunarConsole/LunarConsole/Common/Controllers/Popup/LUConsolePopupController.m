@@ -24,8 +24,6 @@
 
 NSNotificationName const LUConsolePopupControllerWillAppearNotification = @"LUConsolePopupControllerWillAppearNotification";
 NSNotificationName const LUConsolePopupControllerWillDisappearNotification = @"LUConsolePopupControllerWillDisappearNotification";
-NSNotificationName const LUConsoleVariableWillBeginEditingNotification = @"LUConsoleVariableWillBeginEditingNotification";
-NSNotificationName const LUConsoleVariableDidEndEditingNotification = @"LUConsoleVariableDidEndEditingNotification";
 
 NSString * const LUConsoleVariableKeyVariable = @"variable";
 
