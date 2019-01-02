@@ -123,6 +123,11 @@
 		_rangeSlider.minimumValue = variable.range.min;
 		_rangeSlider.maximumValue = variable.range.max;
 		_rangeSlider.translatesAutoresizingMaskIntoConstraints = NO;
+		__weak id weakSelf = self;
+		_rangeSlider.valueChangedCallback = ^(LUSlider *slider, BOOL editingFinished)
+		{
+			[weakSelf rangeSliderValueDidChange:slider editingFinished:editingFinished];
+		};
 		
 		[contentView addSubview:_rangeSlider];
 		
@@ -155,6 +160,18 @@
 	}
 	
 	return nil;
+}
+
+- (void)rangeSliderValueDidChange:(LUSlider *)slider editingFinished:(BOOL)editingFinished
+{
+	if (editingFinished)
+	{
+		self.variable.floatValue = slider.value;
+	}
+	else
+	{
+		self.inputField.text = [NSString stringWithFormat:@"%g", slider.value];
+	}
 }
 
 @end

@@ -31,6 +31,7 @@
     if (self)
     {
         self.tintColor = [LUTheme mainTheme].switchTintColor;
+		[self setup];
     }
     return self;
 }
@@ -41,8 +42,42 @@
 	if (self)
 	{
 		self.tintColor = [LUTheme mainTheme].switchTintColor;
+		[self setup];
 	}
 	return self;
+}
+
+- (void)setup
+{
+	[self addTarget:self action:@selector(valueChanged:forEvent:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)valueChanged:(UISlider *)slider forEvent:(UIEvent *)event
+{
+	UITouch *touch = [event allTouches].anyObject;
+	switch (touch.phase)
+	{
+		case UITouchPhaseBegan:
+			_editing = YES;
+			break;
+		case UITouchPhaseCancelled:
+			_editing = NO;
+			break;
+		case UITouchPhaseMoved:
+			if (_valueChangedCallback) {
+				_valueChangedCallback(self, NO);
+			}
+			break;
+		case UITouchPhaseEnded:
+			_editing = NO;
+			if (_valueChangedCallback) {
+				_valueChangedCallback(self, YES);
+			}
+			break;
+		default:
+			break;
+	}
+	
 }
 
 @end

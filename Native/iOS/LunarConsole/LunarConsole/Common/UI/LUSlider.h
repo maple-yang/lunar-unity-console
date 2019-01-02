@@ -21,6 +21,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class LUSlider;
+
+typedef void(^LUSliderValueChangedCallback)(LUSlider *slider, BOOL editingFinished);
+
 @interface LUSlider : UISlider
+
+@property (nonatomic, assign, readonly, getter=isEditing) BOOL editing;
+@property (nonatomic, copy) LUSliderValueChangedCallback valueChangedCallback;
 
 @end
