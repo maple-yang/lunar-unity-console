@@ -127,14 +127,6 @@
 	}
 }
 
-- (void)openEditor
-{
-	LUCVarEditController *editController = [[LUCVarEditController alloc] initWithVariable:self.variable];
-	LUConsolePopupController *popupController = [[LUConsolePopupController alloc] initWithContentController:editController];
-	popupController.popupDelegate = self;
-	[popupController presentFromController:self.presentingController animated:YES];
-}
-
 #pragma mark -
 #pragma mark LUCvarObserver
 

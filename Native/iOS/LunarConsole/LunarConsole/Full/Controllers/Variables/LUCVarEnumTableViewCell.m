@@ -45,7 +45,6 @@
 
 - (IBAction)valueButtonPress:(id)sender
 {
-	// [self openEditor];
 }
 
 @end
