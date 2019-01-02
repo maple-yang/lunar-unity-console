@@ -19,7 +19,6 @@
 		4D02A7B81E496C93009F4998 /* LUCVarBooleanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02A7961E496C93009F4998 /* LUCVarBooleanTableViewCell.m */; };
 		4D02A7B91E496C93009F4998 /* LUCVarFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02A7991E496C93009F4998 /* LUCVarFactory.m */; };
 		4D02A7BB1E496C93009F4998 /* LUCVarInputTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02A79D1E496C93009F4998 /* LUCVarInputTableViewCell.m */; };
-		4D02A7BD1E496C93009F4998 /* LUCVarStringTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02A7A21E496C93009F4998 /* LUCVarStringTableViewCell.m */; };
 		4D02A7BE1E496C93009F4998 /* LUCVarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02A7A41E496C93009F4998 /* LUCVarTableViewCell.m */; };
 		4D02A7C31E496DF7009F4998 /* LUActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02A7C21E496DF7009F4998 /* LUActionController.m */; };
 		4D02A7C71E496FCA009F4998 /* LUActionControllerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D02A7C61E496FCA009F4998 /* LUActionControllerBase.m */; };
@@ -132,6 +131,11 @@
 		840F08881DEA6B7400E9F13D /* LUStringUtilsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F087E1DEA6B7400E9F13D /* LUStringUtilsTest.m */; };
 		844741B51B719C3100F5ABD3 /* libLunarConsoleFull.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 844741A91B719C3100F5ABD3 /* libLunarConsoleFull.a */; };
 		EF1D47A81E04A60B005BEC07 /* LUActionRegistryFilterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1D47A71E04A60B005BEC07 /* LUActionRegistryFilterTest.swift */; };
+		EF68A0BC21DAB5ED000E3F1A /* LUWeakReference.m in Sources */ = {isa = PBXBuildFile; fileRef = EF68A0B821DAB5EC000E3F1A /* LUWeakReference.m */; };
+		EF68A0BD21DAB5ED000E3F1A /* LUWeakReference.m in Sources */ = {isa = PBXBuildFile; fileRef = EF68A0B821DAB5EC000E3F1A /* LUWeakReference.m */; };
+		EF68A0BE21DAB5ED000E3F1A /* LUObservable.m in Sources */ = {isa = PBXBuildFile; fileRef = EF68A0BB21DAB5ED000E3F1A /* LUObservable.m */; };
+		EF68A0BF21DAB5ED000E3F1A /* LUObservable.m in Sources */ = {isa = PBXBuildFile; fileRef = EF68A0BB21DAB5ED000E3F1A /* LUObservable.m */; };
+		EF68A0C721DAB6C0000E3F1A /* LUCVarEnumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EF68A0C421DAB6C0000E3F1A /* LUCVarEnumTableViewCell.m */; };
 		EF6C29B921D6BCB60031DAA8 /* LUConsoleEditorSettingsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6C29B821D6BCB60031DAA8 /* LUConsoleEditorSettingsTest.m */; };
 		EF6C29BF21D6C7390031DAA8 /* LUConsolePluginSettingsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6C29BE21D6C7390031DAA8 /* LUConsolePluginSettingsTest.m */; };
 		EF6C29C621D7DBE50031DAA8 /* LUBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6C29C521D7DBE50031DAA8 /* LUBarButtonItem.m */; };
@@ -194,8 +198,6 @@
 		4D02A79C1E496C93009F4998 /* LUCVarInputTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUCVarInputTableViewCell.h; sourceTree = "<group>"; };
 		4D02A79D1E496C93009F4998 /* LUCVarInputTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUCVarInputTableViewCell.m; sourceTree = "<group>"; };
 		4D02A79E1E496C93009F4998 /* LUCVarInputTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LUCVarInputTableViewCell.xib; sourceTree = "<group>"; };
-		4D02A7A11E496C93009F4998 /* LUCVarStringTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUCVarStringTableViewCell.h; sourceTree = "<group>"; };
-		4D02A7A21E496C93009F4998 /* LUCVarStringTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUCVarStringTableViewCell.m; sourceTree = "<group>"; };
 		4D02A7A31E496C93009F4998 /* LUCVarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUCVarTableViewCell.h; sourceTree = "<group>"; };
 		4D02A7A41E496C93009F4998 /* LUCVarTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUCVarTableViewCell.m; sourceTree = "<group>"; };
 		4D02A7A51E496C93009F4998 /* LUVariables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUVariables.h; sourceTree = "<group>"; };
@@ -400,6 +402,14 @@
 		844741BA1B719C3100F5ABD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF1D47A61E04A60A005BEC07 /* LunarConsoleTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LunarConsoleTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		EF1D47A71E04A60B005BEC07 /* LUActionRegistryFilterTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LUActionRegistryFilterTest.swift; sourceTree = "<group>"; };
+		EF68A0B821DAB5EC000E3F1A /* LUWeakReference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUWeakReference.m; sourceTree = "<group>"; };
+		EF68A0B921DAB5ED000E3F1A /* LUObservable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUObservable.h; sourceTree = "<group>"; };
+		EF68A0BA21DAB5ED000E3F1A /* LUWeakReference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUWeakReference.h; sourceTree = "<group>"; };
+		EF68A0BB21DAB5ED000E3F1A /* LUObservable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUObservable.m; sourceTree = "<group>"; };
+		EF68A0C021DAB6BF000E3F1A /* LUCVarEnumTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LUCVarEnumTableViewCell.xib; sourceTree = "<group>"; };
+		EF68A0C121DAB6C0000E3F1A /* LUCVarTableViewCell+Inheritance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LUCVarTableViewCell+Inheritance.h"; sourceTree = "<group>"; };
+		EF68A0C221DAB6C0000E3F1A /* LUCVarEnumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LUCVarEnumTableViewCell.h; sourceTree = "<group>"; };
+		EF68A0C421DAB6C0000E3F1A /* LUCVarEnumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LUCVarEnumTableViewCell.m; sourceTree = "<group>"; };
 		EF6C29B821D6BCB60031DAA8 /* LUConsoleEditorSettingsTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUConsoleEditorSettingsTest.m; sourceTree = "<group>"; };
 		EF6C29BA21D6C5270031DAA8 /* LUSerializableObject+Inheritance.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LUSerializableObject+Inheritance.h"; sourceTree = "<group>"; };
 		EF6C29BE21D6C7390031DAA8 /* LUConsolePluginSettingsTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUConsolePluginSettingsTest.m; sourceTree = "<group>"; };
@@ -533,15 +543,17 @@
 				4D02A8361E594AEE009F4998 /* LUCVarEditController.h */,
 				4D02A8371E594AEE009F4998 /* LUCVarEditController.m */,
 				4D02A8451E5A8E2B009F4998 /* LUCVarEditController.xib */,
+				EF68A0C221DAB6C0000E3F1A /* LUCVarEnumTableViewCell.h */,
+				EF68A0C421DAB6C0000E3F1A /* LUCVarEnumTableViewCell.m */,
+				EF68A0C021DAB6BF000E3F1A /* LUCVarEnumTableViewCell.xib */,
 				4D02A7981E496C93009F4998 /* LUCVarFactory.h */,
 				4D02A7991E496C93009F4998 /* LUCVarFactory.m */,
 				4D02A79C1E496C93009F4998 /* LUCVarInputTableViewCell.h */,
 				4D02A79D1E496C93009F4998 /* LUCVarInputTableViewCell.m */,
 				4D02A79E1E496C93009F4998 /* LUCVarInputTableViewCell.xib */,
-				4D02A7A11E496C93009F4998 /* LUCVarStringTableViewCell.h */,
-				4D02A7A21E496C93009F4998 /* LUCVarStringTableViewCell.m */,
 				4D02A7A31E496C93009F4998 /* LUCVarTableViewCell.h */,
 				4D02A7A41E496C93009F4998 /* LUCVarTableViewCell.m */,
+				EF68A0C121DAB6C0000E3F1A /* LUCVarTableViewCell+Inheritance.h */,
 				4D02A7A51E496C93009F4998 /* LUVariables.h */,
 			);
 			path = Variables;
@@ -865,6 +877,8 @@
 				4DE389E91DFCAC0E003A2B6B /* LUNotificationCenter.m */,
 				4DD4FBBE1DFB932B00032A29 /* LUObject.h */,
 				4DD4FBBF1DFB932B00032A29 /* LUObject.m */,
+				EF68A0B921DAB5ED000E3F1A /* LUObservable.h */,
+				EF68A0BB21DAB5ED000E3F1A /* LUObservable.m */,
 				4DD4FBC01DFB932B00032A29 /* LUSerializableObject.h */,
 				4DD4FBC11DFB932B00032A29 /* LUSerializableObject.m */,
 				EF6C29BA21D6C5270031DAA8 /* LUSerializableObject+Inheritance.h */,
@@ -879,6 +893,8 @@
 				4DD4FBCA1DFB932B00032A29 /* LUThreading.h */,
 				4DD4FBCB1DFB932B00032A29 /* LUThreading.m */,
 				4DD4FBCC1DFB932B00032A29 /* LUUtils.h */,
+				EF68A0BA21DAB5ED000E3F1A /* LUWeakReference.h */,
+				EF68A0B821DAB5EC000E3F1A /* LUWeakReference.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1051,6 +1067,7 @@
 			files = (
 				4DD4FC021DFB932C00032A29 /* LUTheme.m in Sources */,
 				4DD4FC0A1DFB932C00032A29 /* LUAssert.m in Sources */,
+				EF68A0BF21DAB5ED000E3F1A /* LUObservable.m in Sources */,
 				4DD4FBE81DFB932C00032A29 /* LUConsolePluginSettings.m in Sources */,
 				4DD4FBCE1DFB932B00032A29 /* LUEntry.m in Sources */,
 				4D02A7C31E496DF7009F4998 /* LUActionController.m in Sources */,
@@ -1089,6 +1106,7 @@
 				4DD4FC121DFB932C00032A29 /* LULittleHelper.m in Sources */,
 				4D02A8311E5940D2009F4998 /* LUSlider.m in Sources */,
 				4DD4FBFE1DFB932C00032A29 /* LUSwitch.m in Sources */,
+				EF68A0BD21DAB5ED000E3F1A /* LUWeakReference.m in Sources */,
 				4DD4FC201DFB932C00032A29 /* LUStringUtils.m in Sources */,
 				4DD4FBEE1DFB932C00032A29 /* LUConsolePopupController.m in Sources */,
 				4DD4FC001DFB932C00032A29 /* LUTableView.m in Sources */,
@@ -1124,7 +1142,6 @@
 				4D02A7B91E496C93009F4998 /* LUCVarFactory.m in Sources */,
 				4DD4FBFB1DFB932C00032A29 /* LUPassTouchView.m in Sources */,
 				4DD4FBE91DFB932C00032A29 /* lunar_unity_native_interface.m in Sources */,
-				4D02A7BD1E496C93009F4998 /* LUCVarStringTableViewCell.m in Sources */,
 				4DD4FC1B1DFB932C00032A29 /* LUSortedList.m in Sources */,
 				4DD4FBF31DFB932C00032A29 /* LUExceptionWarningController.m in Sources */,
 				4DD4FC191DFB932C00032A29 /* LUSerializationUtils.m in Sources */,
@@ -1145,11 +1162,14 @@
 				4DD4FBF71DFB932C00032A29 /* LUButton.m in Sources */,
 				4DD4FBF11DFB932C00032A29 /* LUConsoleSettingsController.m in Sources */,
 				4D02A7B41E496C93009F4998 /* LUActionRegistryFilter.m in Sources */,
+				EF68A0BC21DAB5ED000E3F1A /* LUWeakReference.m in Sources */,
 				4DD4FBD71DFB932B00032A29 /* LUConsoleLogEntryList.m in Sources */,
 				4DD4FBDD1DFB932C00032A29 /* LUConsoleLogMenuController.m in Sources */,
 				4DD4FC051DFB932C00032A29 /* LUViewController.m in Sources */,
+				EF68A0C721DAB6C0000E3F1A /* LUCVarEnumTableViewCell.m in Sources */,
 				4DD4FBDB1DFB932B00032A29 /* LUConsoleLogEntryTableViewCell.m in Sources */,
 				4D02A8481E5A8EA4009F4998 /* LUTextField.m in Sources */,
+				EF68A0BE21DAB5ED000E3F1A /* LUObservable.m in Sources */,
 				4DD4FBEB1DFB932C00032A29 /* LUUnityScriptMessenger.m in Sources */,
 				4DD4FC1D1DFB932C00032A29 /* LUStacktrace.m in Sources */,
 				4DD4FC111DFB932C00032A29 /* LULittleHelper.m in Sources */,
