@@ -25,6 +25,11 @@
 
 static inline NSNumber *LUNumberFromString(NSString *str)
 {
+	if ([str hasPrefix:@"+"])
+	{
+		str = [str substringFromIndex:1];
+	}
+	
     NSNumberFormatter *numberFormatter = [NSNumberFormatter new];
     numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
     NSNumber *number = [numberFormatter numberFromString:str];

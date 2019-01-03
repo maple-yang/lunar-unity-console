@@ -140,6 +140,8 @@
 		EF6C29BF21D6C7390031DAA8 /* LUConsolePluginSettingsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6C29BE21D6C7390031DAA8 /* LUConsolePluginSettingsTest.m */; };
 		EF6C29C621D7DBE50031DAA8 /* LUBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6C29C521D7DBE50031DAA8 /* LUBarButtonItem.m */; };
 		EF6C29C721D7DBE50031DAA8 /* LUBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EF6C29C521D7DBE50031DAA8 /* LUBarButtonItem.m */; };
+		EFFB414D21DD81FB0029215A /* TestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFB414C21DD81FA0029215A /* TestCase.swift */; };
+		EFFB414F21DD835D0029215A /* LUCVarTest.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFB414E21DD835D0029215A /* LUCVarTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -415,6 +417,8 @@
 		EF6C29BE21D6C7390031DAA8 /* LUConsolePluginSettingsTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUConsolePluginSettingsTest.m; sourceTree = "<group>"; };
 		EF6C29C421D7DBE50031DAA8 /* LUBarButtonItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LUBarButtonItem.h; sourceTree = "<group>"; };
 		EF6C29C521D7DBE50031DAA8 /* LUBarButtonItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUBarButtonItem.m; sourceTree = "<group>"; };
+		EFFB414C21DD81FA0029215A /* TestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCase.swift; sourceTree = "<group>"; };
+		EFFB414E21DD835D0029215A /* LUCVarTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LUCVarTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -902,6 +906,7 @@
 		840F08731DEA6B7400E9F13D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EFFB414C21DD81FA0029215A /* TestCase.swift */,
 				840F08741DEA6B7400E9F13D /* TestCase.h */,
 				840F08751DEA6B7400E9F13D /* TestCase.m */,
 			);
@@ -940,6 +945,7 @@
 				840F08791DEA6B7400E9F13D /* LUConsoleEntryLookupTableTest.m */,
 				EF6C29BE21D6C7390031DAA8 /* LUConsolePluginSettingsTest.m */,
 				840F087A1DEA6B7400E9F13D /* LUConsoleTest.m */,
+				EFFB414E21DD835D0029215A /* LUCVarTest.m */,
 				840F087B1DEA6B7400E9F13D /* LUMutableArrayTest.m */,
 				EF1D47A61E04A60A005BEC07 /* LunarConsoleTests-Bridging-Header.h */,
 				840F087C1DEA6B7400E9F13D /* LUSortedListTest.m */,
@@ -1201,7 +1207,9 @@
 			files = (
 				EF6C29BF21D6C7390031DAA8 /* LUConsolePluginSettingsTest.m in Sources */,
 				840F08841DEA6B7400E9F13D /* LUConsoleTest.m in Sources */,
+				EFFB414D21DD81FB0029215A /* TestCase.swift in Sources */,
 				840F08871DEA6B7400E9F13D /* LUStacktraceTest.m in Sources */,
+				EFFB414F21DD835D0029215A /* LUCVarTest.m in Sources */,
 				EF1D47A81E04A60B005BEC07 /* LUActionRegistryFilterTest.swift in Sources */,
 				840F08811DEA6B7400E9F13D /* LUActionRegistryTest.m in Sources */,
 				840F08821DEA6B7400E9F13D /* LUConsoleEntryListTest.m in Sources */,

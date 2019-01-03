@@ -214,6 +214,36 @@ NSString * const LUCVarTypeNameUnknown = @"Unknown";
     return [_value isEqualToString:_defaultValue];
 }
 
+- (int)intValue
+{
+	return [self.value intValue];
+}
+
+- (void)setIntValue:(int)intValue
+{
+	[self setValue:[NSString stringWithFormat:@"%d", intValue]];
+}
+
+- (float)floatValue
+{
+	return [self.value floatValue];
+}
+
+- (void)setFloatValue:(float)floatValue
+{
+	[self setValue:[NSString stringWithFormat:@"%f", floatValue]];
+}
+
+- (BOOL)boolValue
+{
+	return self.intValue != 0;
+}
+
+- (void)setBoolValue:(BOOL)boolValue
+{
+	[self setValue:boolValue ? @"1" : @"0"];
+}
+
 - (BOOL)hasRange
 {
     return !isnan(_range.min) && !isnan(_range.max);

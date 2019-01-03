@@ -123,9 +123,7 @@
 - (IBAction)sliderEditingFinished:(id)sender
 {
     UISlider *slider = sender;
-    NSString *value = [[NSString alloc] initWithFormat:@"%g", slider.value];
-    
-    _variable.value = value;
+    _variable.floatValue = slider.value;
 }
 
 - (void)onResetButton:(id)sender
@@ -178,7 +176,7 @@
                     value = _variable.range.max;
                 }
             }
-            _variable.value = [[NSString alloc] initWithFormat:@"%g", value];
+			_variable.floatValue = value;
         }
         else
         {

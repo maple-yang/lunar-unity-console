@@ -38,7 +38,7 @@
 - (void)updateUI
 {
 	[super updateUI];
-	_toggleSwitch.on = [self.variable.value isEqualToString:@"1"];
+	_toggleSwitch.on = self.variable.boolValue;
 }
 
 #pragma mark -
@@ -46,7 +46,7 @@
 
 - (IBAction)onToggleSwitch:(id)sender
 {
-	self.variable.value = _toggleSwitch.isOn ? @"1" : @"0";
+	self.variable.boolValue = _toggleSwitch.isOn;
 }
 
 @end
