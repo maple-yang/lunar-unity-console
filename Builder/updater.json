@@ -1,6 +1,6 @@
 {
   "status": "OK",
-  "version": "1.5.5",
-  "message": "**Fixes:**\n\n* **Android**: fixed black settings screen when building on Unity 2018.x.",
+  "version": "1.5.6",
+  "message": "**Fixes:**\n\n* Fixed resolving variables in Unity 2018.3.x.",
   "url": "https://www.assetstore.unity3d.com/en/#!/content/43800"
 }
